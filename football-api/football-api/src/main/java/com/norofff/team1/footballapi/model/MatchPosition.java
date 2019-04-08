@@ -3,10 +3,12 @@ package com.norofff.team1.footballapi.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
+
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
 import java.io.Serializable;
 
 @Data
@@ -24,4 +26,6 @@ public class MatchPosition {
 class MatchPositionId implements Serializable {
     private int player_id;
     private int match_id;
+
 }
+

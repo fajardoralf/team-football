@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Date;
 
@@ -12,7 +13,8 @@ import java.sql.Date;
 @Table(name = "match")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Match {
-    private int match_id;
+    @Id
+    private int match_id;   //Primary Key
     private Date match_date;
     private int season_id;
     private int location_id;
