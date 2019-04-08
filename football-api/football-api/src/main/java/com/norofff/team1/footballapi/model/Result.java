@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Data
@@ -12,8 +13,8 @@ import javax.persistence.Table;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Result {
     private int score;
-    private String result;
-    private int match_id;
+    @Id
+    private int match_id;   //Primary Key
     private int team_id;
 
     public Result(){}

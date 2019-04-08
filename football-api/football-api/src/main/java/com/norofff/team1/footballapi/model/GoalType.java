@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Data
@@ -11,7 +12,8 @@ import javax.persistence.Table;
 @Table(name = "goal_type")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class GoalType {
-    private int goal_type_id;
+    @Id
+    private int goal_type_id;   //Primary Key
     private String type;
 
     public GoalType(){}
