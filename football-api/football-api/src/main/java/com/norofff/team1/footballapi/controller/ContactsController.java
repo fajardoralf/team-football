@@ -1,7 +1,7 @@
 package com.norofff.team1.footballapi.controller;
 
-import com.norofff.team1.footballapi.model.Association;
-import com.norofff.team1.footballapi.service.Association_Service;
+import com.norofff.team1.footballapi.model.Contact;
+import com.norofff.team1.footballapi.service.Contact_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -12,18 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class AssociationController {
-    private final Association_Service association_service;
+public class ContactsController {
+    private final Contact_Service contact_service;
 
     @Autowired
-    public AssociationController(Association_Service association_service){
-        this.association_service = association_service;
+    public ContactsController(Contact_Service contact_service){
+        this.contact_service = contact_service;
     }
 
-    @GetMapping("/association")
-    public ResponseEntity<List<Association>> findAll() {
+    @GetMapping("/contacts")
+    public ResponseEntity<List<Contact>> findAll() {
         try {
-            List<Association> associations = association_service.findAll();
+            List<Contact> associations = contact_service.findAll();
             return new ResponseEntity<>(associations, HttpStatus.FOUND);
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

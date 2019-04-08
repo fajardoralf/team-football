@@ -2,13 +2,14 @@ package com.norofff.team1.footballapi.service.implementation;
 
 import com.norofff.team1.footballapi.model.GoalType;
 import com.norofff.team1.footballapi.repository.GoalType_Repository;
+import com.norofff.team1.footballapi.service.GoalType_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class GoalType_Implementation {
+public class GoalType_Implementation implements GoalType_Service {
     private final GoalType_Repository goalType_repository;
 
     @Autowired
