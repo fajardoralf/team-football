@@ -4,9 +4,10 @@ import com.norofff.team1.footballapi.model.Season;
 import com.norofff.team1.footballapi.repository.Season_Repository;
 import com.norofff.team1.footballapi.service.Season_Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class Season_Implementation implements Season_Service {
     private final Season_Repository season_repository;
 
