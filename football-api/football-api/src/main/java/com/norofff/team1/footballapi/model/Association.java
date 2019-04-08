@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Association {
     @Id
-    private int association;    //Primary Key
+    private int association_id;    //Primary Key
     private String name;
     private String description;
 
