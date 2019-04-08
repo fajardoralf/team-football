@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Data
@@ -11,6 +12,7 @@ import javax.persistence.Table;
 @Table(name = "address")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Address {
+    @Id
     private String address_id;
     private String address_line_1;
     private String address_line_2;
@@ -22,4 +24,5 @@ public class Address {
     public Address(){
 
     }
+
 }
