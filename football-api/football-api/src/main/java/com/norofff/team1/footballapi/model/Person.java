@@ -1,23 +1,19 @@
 package com.norofff.team1.footballapi.model;
-import com.sun.istack.internal.Nullable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import org.springframework.lang.Nullable;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.sql.Date;
 
 
-/*CREATE TABLE PERSON
-(
-  person_id INT NOT NULL,
-  first_name VARCHAR(64) NOT NULL,
-  last_name VARCHAR(64) NOT NULL,
-  date_of_birth DATE NOT NULL,
-  address_id VARCHAR(64),
-  PRIMARY KEY (person_id),
-  FOREIGN KEY (address_id) REFERENCES ADDRESS(address_id)
-);*/
+
 @Data
+@Entity
+@Table(name = "person")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Person{
     private int person_id;  //Primary key
     @Nullable

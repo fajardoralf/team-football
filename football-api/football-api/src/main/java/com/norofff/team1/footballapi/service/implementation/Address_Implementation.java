@@ -17,6 +17,7 @@ public class Address_Implementation implements Address_Service {
     public Address_Implementation(Address_Repository address_repository) {
         this.address_repository = address_repository;
     }
+
     public List<Address> findAll() {
         return address_repository.findAll();
     }
