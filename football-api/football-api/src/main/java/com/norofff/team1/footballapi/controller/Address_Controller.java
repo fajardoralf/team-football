@@ -24,8 +24,8 @@ public class Address_Controller {
     @GetMapping("/address")
     public ResponseEntity<List<Address>> findAll() {
         try {
-            List<Address> character_classes = address_service.findAll();
-            return new ResponseEntity<>(character_classes, HttpStatus.FOUND);
+            List<Address> addresses = address_service.findAll();
+            return new ResponseEntity<>(addresses, HttpStatus.FOUND);
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
