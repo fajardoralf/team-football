@@ -3,17 +3,17 @@ package com.norofff.team1.footballapi.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name = "address")
+
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Address {
     @Id
-    private String address_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int address_id;
     private String address_line_1;
     private String address_line_2;
     private String postal_code;
@@ -24,5 +24,4 @@ public class Address {
     public Address(){
 
     }
-
 }
