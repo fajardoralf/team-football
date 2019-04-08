@@ -3,8 +3,8 @@ package com.norofff.team1.footballapi.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @Entity
@@ -12,8 +12,13 @@ import javax.persistence.Table;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class MatchPosition {
     private String position;
-    private int player_id;
-    private int match_id;
+    @EmbeddedId MatchPositionId id;
 
     public MatchPosition(){}
 }
+
+@Embeddable
+class MatchPositionId implements Serializable {
+    private int player_id;
+    private int match_id;
+        }

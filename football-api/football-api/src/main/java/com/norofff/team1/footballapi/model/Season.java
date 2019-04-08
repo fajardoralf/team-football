@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Data
@@ -11,6 +12,7 @@ import javax.persistence.Table;
 @Table(name = "season")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Season {
+    @Id
     private int season_id;
     private int start_date;
     private int end_date;
