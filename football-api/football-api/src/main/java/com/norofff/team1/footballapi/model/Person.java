@@ -2,6 +2,8 @@ package com.norofff.team1.footballapi.model;
 import com.sun.istack.internal.Nullable;
 import lombok.Data;
 
+import org.springframework.lang.Nullable;
+
 import java.sql.Date;
 
 
