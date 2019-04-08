@@ -1,5 +1,7 @@
 package com.noroff.team1.footballapi.models;
 
+import org.springframework.lang.Nullable;
+
 import java.sql.Date;
 
 /*CREATE TABLE PERSON
