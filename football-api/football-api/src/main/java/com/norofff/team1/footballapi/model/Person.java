@@ -3,6 +3,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Date;
@@ -15,6 +16,7 @@ import java.sql.Date;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Person{
     @Id
+    @GeneratedValue
     private int person_id;  //Primary key
     private int address_id; //Foreign key (can be Null)
     private String first_name;
