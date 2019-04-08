@@ -15,6 +15,8 @@ configurations {
 	}
 }
 
+
+
 repositories {
 	mavenCentral()
 }
@@ -27,5 +29,5 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	compile group: 'postgresql', name: 'postgresql', version: '9.0-801.jdbc4'
+	compile group: 'org.postgresql', name: 'postgresql', version: '42.2.5'
 }
