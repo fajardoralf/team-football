@@ -22,7 +22,7 @@ public class Address_Controller {
     }
 
     @GetMapping("/address")
-    public ResponseEntity<List<Address>> getAll() {
+    public ResponseEntity<List<Address>> findAll() {
         try {
             List<Address> character_classes = address_service.findAll();
             return new ResponseEntity<>(character_classes, HttpStatus.FOUND);
