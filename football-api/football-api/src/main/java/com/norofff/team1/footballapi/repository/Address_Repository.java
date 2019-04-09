@@ -11,6 +11,6 @@ public interface Address_Repository extends JpaRepository<Address, Integer> {
     Address getOne(Integer integer);
     Address save(Address address);
 
-    /*Address save(Integer integer, Address address);
-    boolean deleteById(int id);*/
+    /*Address update(Integer integer, Address address);*/
+    void deleteById(int id);
 }
