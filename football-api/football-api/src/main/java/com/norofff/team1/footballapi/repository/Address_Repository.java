@@ -7,4 +7,9 @@ import java.util.List;
 
 public interface Address_Repository extends JpaRepository<Address, Integer> {
     List<Address> findAll();
+
+    Address getOne(Integer integer);
+    Address create(Address address);
+    Address update(Integer integer, Address address);
+    boolean delete(Integer integer);
 }
