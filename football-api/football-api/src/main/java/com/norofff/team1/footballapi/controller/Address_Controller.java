@@ -57,13 +57,12 @@ public class Address_Controller {
         }catch (DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-    }
-    */
+    }*/
+
+
     @DeleteMapping(value = "/address/{id}")
-    public ResponseEntity delete(@PathVariable int id){
-        if(address_service.delete(id)){
-            return new ResponseEntity(HttpStatus.OK);
-        }
-        return new ResponseEntity(HttpStatus.BAD_REQUEST);
+    public void delete(@PathVariable int id){
+        address_service.delete(id);
+
     }
 }

@@ -34,12 +34,12 @@ public class Address_Implementation implements Address_Service {
         return address_repository.save(address);
     }*/
 
-    public boolean delete(int id){
+    public void delete(int id){
         try{
             address_repository.deleteById(id);
-            return true;
-        }catch (DataAccessException e){
-            return false;
+
+        }catch (IllegalAccessError e){
+            throw new IllegalAccessError();
         }
     }
 }
