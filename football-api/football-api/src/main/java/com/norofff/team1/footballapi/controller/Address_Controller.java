@@ -49,7 +49,7 @@ public class Address_Controller {
         }
     }
 
-    @PutMapping
+    /*@PutMapping
     public ResponseEntity<Address> update(@PathVariable int id, @RequestBody Address address){
         try{
             address_service.update(id, address);
@@ -65,5 +65,5 @@ public class Address_Controller {
             return new ResponseEntity(HttpStatus.OK);
         }
         return new ResponseEntity(HttpStatus.BAD_REQUEST);
-    }
+    }*/
 }
