@@ -3,9 +3,7 @@ package com.norofff.team1.footballapi.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -13,6 +11,7 @@ import javax.persistence.Table;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Team {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int team_id;
     private int owner_id;
     private int association_id;
@@ -20,4 +19,12 @@ public class Team {
     private int location_id;
 
     public Team(){}
+
+    public Team(int team_id, int owner_id, int association_id, int coach_id, int location_id) {
+        this.team_id = team_id;
+        this.owner_id = owner_id;
+        this.association_id = association_id;
+        this.coach_id = coach_id;
+        this.location_id = location_id;
+    }
 }
