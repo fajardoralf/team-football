@@ -6,6 +6,7 @@ import com.norofff.team1.footballapi.service.Person_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import java.util.List;
 
 @Service
@@ -18,5 +19,9 @@ public class Person_Implementation implements Person_Service {
     }
 
     public List<Person> findAll() { return person_repository.findAll();}
+
+    public Person getOne(int id) {return person_repository.getOne(id);}
+
+    public Person create(Person person) {return person_repository.save(person);}
 
 }

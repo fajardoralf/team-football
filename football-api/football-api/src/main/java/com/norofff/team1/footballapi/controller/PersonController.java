@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,6 +29,27 @@ public class PersonController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping("person/{id}")
+    public ResponseEntity<Person> getOne(@PathVariable int id){
+        try{
+            Person person = person_service.getOne(id);
+            return new ResponseEntity<>(person, HttpStatus.ACCEPTED);
+        } catch (DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("/person")
+    public ResponseEntity<Person> create(@RequestBody Person person){
+        try{
+            person_service.create(person);
+            return new ResponseEntity<>(person, HttpStatus.ACCEPTED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
 
 
 
