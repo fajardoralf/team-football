@@ -7,4 +7,9 @@ import java.util.List;
 
 public interface Team_Repository extends JpaRepository<Team, Integer> {
     List<Team> findAll();
+
+    Team getOne(int id);
+    Team save(Team team);
+    //Team update(int id, Team address);
+    void deleteById(int id);
 }

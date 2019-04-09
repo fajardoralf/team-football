@@ -18,4 +18,6 @@ public class Association {
     private String description;
 
     public Association(){}
+
+
 }

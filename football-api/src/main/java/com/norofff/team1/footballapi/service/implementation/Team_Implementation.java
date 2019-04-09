@@ -5,12 +5,13 @@ import com.norofff.team1.footballapi.repository.Team_Repository;
 import com.norofff.team1.footballapi.service.Team_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 @Service
 public class Team_Implementation implements Team_Service {
-
     private final Team_Repository team_repository;
 
     @Autowired
@@ -21,4 +22,14 @@ public class Team_Implementation implements Team_Service {
     public List<Team> findAll() {
         return team_repository.findAll();
     }
+
+    @Override
+    public Team getOne(int id) {return team_repository.getOne(id);}
+    @Override
+    public Team create(Team team) {return team_repository.save(team);}
+    //@Override
+    //public Team update(int id, Team team){return team_repository.update(id, team);}
+    @Override
+    public void delete(int id){team_repository.deleteById(id);}
+
 }
