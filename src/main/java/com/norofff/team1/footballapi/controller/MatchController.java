@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
 public class MatchController {
     private final Match_Service match_service;
 
@@ -28,7 +29,7 @@ public class MatchController {
         }
     }
 
-    @GetMapping("match/{id}")
+    @GetMapping("/match/{id}")
     public ResponseEntity<Match> getOne(@PathVariable int id){
         try{
             Match match = match_service.getOne(id);

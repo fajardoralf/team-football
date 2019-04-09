@@ -19,7 +19,7 @@ public class MatchGoalController {
         this.matchGoal_service = matchGoal_service;
     }
 
-    @GetMapping("/matchGoal")
+    @GetMapping("/matchgoal")
     public ResponseEntity<List<MatchGoal>> findAll() {
         try {
             List<MatchGoal> matchGoals = matchGoal_service.findAll();
