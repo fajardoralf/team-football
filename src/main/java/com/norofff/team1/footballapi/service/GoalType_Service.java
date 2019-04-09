@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface GoalType_Service {
     List<GoalType> findAll();
+
+    GoalType create(GoalType goalType);
+    GoalType update(int id, GoalType goalType);
+    void delete(int id);
 }

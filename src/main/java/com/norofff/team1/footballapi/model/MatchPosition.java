@@ -20,6 +20,8 @@ public class MatchPosition {
     @EmbeddedId MatchPositionId id;
 
     public MatchPosition(){}
+
+
 }
 
 @Embeddable

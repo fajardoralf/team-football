@@ -21,4 +21,19 @@ public class MatchPosition_Implementation implements MatchPosition_Service {
     public List<MatchPosition> findAll() {
         return matchPosition_repository.findAll();
     }
+
+    public MatchPosition create(MatchPosition matchGoal) {return matchPosition_repository.save(matchGoal);}
+
+    /*public MatchPosition update(int id, MatchPosition matchPosition){
+        matchPosition.setId(id);
+        return matchGoal_repository.save(matchGoal);
+    }
+
+    public void delete(int id){
+        try{
+            matchGoal_repository.deleteById(id);
+        }catch (IllegalAccessError e){
+            throw new IllegalAccessError();
+        }
+    }*/
 }

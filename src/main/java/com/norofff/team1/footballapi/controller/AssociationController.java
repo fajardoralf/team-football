@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +27,31 @@ public class AssociationController {
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @PostMapping("/association")
+    public ResponseEntity<Association> create(@RequestBody Association association){
+        try{
+            association_service.create(association);
+            return new ResponseEntity<>(association, HttpStatus.ACCEPTED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PutMapping(value = "/association/{id}")
+    public ResponseEntity<Association> update(@PathVariable int id, @RequestBody Association association){
+        try{
+            association_service.update(id, association);
+            return new ResponseEntity<>(association, HttpStatus.ACCEPTED);
+        }catch (DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
+    @DeleteMapping(value = "/association/{id}")
+    public void delete(@PathVariable int id){
+        association_service.delete(id);
     }
 }

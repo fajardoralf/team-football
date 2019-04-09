@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class ContactsController {
         this.contact_service = contact_service;
     }
 
-    @GetMapping("/contacts")
+    @GetMapping("/contact")
     public ResponseEntity<List<Contact>> findAll() {
         try {
             List<Contact> associations = contact_service.findAll();
@@ -28,5 +27,30 @@ public class ContactsController {
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @PostMapping("/contact")
+    public ResponseEntity<Contact> create(@RequestBody Contact contact){
+        try{
+            contact_service.create(contact);
+            return new ResponseEntity<>(contact, HttpStatus.ACCEPTED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PutMapping(value = "/contact/{id}")
+    public ResponseEntity<Contact> update(@PathVariable int id, @RequestBody Contact contact){
+        try{
+            contact_service.update(id, contact);
+            return new ResponseEntity<>(contact, HttpStatus.ACCEPTED);
+        }catch (DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @DeleteMapping(value = "/contact/{id}")
+    public void delete(@PathVariable int id){
+        contact_service.delete(id);
     }
 }

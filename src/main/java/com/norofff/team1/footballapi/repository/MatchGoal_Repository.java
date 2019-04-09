@@ -7,4 +7,8 @@ import java.util.List;
 
 public interface MatchGoal_Repository extends JpaRepository<MatchGoal, Integer> {
     List<MatchGoal> findAll();
+
+    MatchGoal save(MatchGoal matchGoal);
+
+    void deleteById(int id);
 }

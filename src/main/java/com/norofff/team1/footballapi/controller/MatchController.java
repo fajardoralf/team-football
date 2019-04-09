@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +26,30 @@ public class MatchController {
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @PostMapping("/match")
+    public ResponseEntity<Match> create(@RequestBody Match match){
+        try{
+            match_service.create(match);
+            return new ResponseEntity<>(match, HttpStatus.ACCEPTED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PutMapping(value = "/match/{id}")
+    public ResponseEntity<Match> update(@PathVariable int id, @RequestBody Match match){
+        try{
+            match_service.update(id, match);
+            return new ResponseEntity<>(match, HttpStatus.ACCEPTED);
+        }catch (DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @DeleteMapping(value = "/match/{id}")
+    public void delete(@PathVariable int id){
+        match_service.delete(id);
     }
 }

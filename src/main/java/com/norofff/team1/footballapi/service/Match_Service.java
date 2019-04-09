@@ -6,4 +6,7 @@ import java.util.List;
 
 public interface Match_Service {
     List<Match> findAll();
+    Match create(Match match);
+    Match update(int id, Match match);
+    void delete(int id);
 }

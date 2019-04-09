@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface Contact_Service {
     List<Contact> findAll();
+
+    Contact create(Contact contact);
+    Contact update(int id, Contact contact);
+    void delete(int id);
 }

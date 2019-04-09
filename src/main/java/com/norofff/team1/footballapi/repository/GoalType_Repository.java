@@ -7,4 +7,8 @@ import java.util.List;
 
 public interface GoalType_Repository extends JpaRepository<GoalType, Integer> {
     List<GoalType> findAll();
+
+    GoalType save(GoalType association);
+
+    void deleteById(int id);
 }

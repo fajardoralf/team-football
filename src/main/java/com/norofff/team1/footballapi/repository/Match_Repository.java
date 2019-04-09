@@ -7,4 +7,7 @@ import java.util.List;
 
 public interface Match_Repository extends JpaRepository<Match, Integer> {
     List<Match> findAll();
+    Match save(Match match);
+
+    void deleteById(int id);
 }

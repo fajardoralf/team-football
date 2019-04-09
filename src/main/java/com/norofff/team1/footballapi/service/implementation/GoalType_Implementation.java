@@ -20,4 +20,19 @@ public class GoalType_Implementation implements GoalType_Service {
     public List<GoalType> findAll() {
         return goalType_repository.findAll();
     }
+
+    public GoalType create(GoalType goalType) {return goalType_repository.save(goalType);}
+
+    public GoalType update(int id, GoalType goalType){
+        goalType.setGoal_type_id(id);
+        return goalType_repository.save(goalType);
+    }
+
+    public void delete(int id){
+        try{
+            goalType_repository.deleteById(id);
+        }catch (IllegalAccessError e){
+            throw new IllegalAccessError();
+        }
+    }
 }

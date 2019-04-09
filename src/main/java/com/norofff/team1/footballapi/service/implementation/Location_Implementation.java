@@ -20,4 +20,19 @@ public class Location_Implementation implements Location_Service {
         return location_repository.findAll();
     }
 
+    public Location create(Location location) {return location_repository.save(location);}
+
+    public Location update(int id, Location location){
+        location.setLocation_id(id);
+        return location_repository.save(location);
+    }
+
+    public void delete(int id){
+        try{
+            location_repository.deleteById(id);
+        }catch (IllegalAccessError e){
+            throw new IllegalAccessError();
+        }
+    }
+
 }

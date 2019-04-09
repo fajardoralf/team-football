@@ -18,4 +18,19 @@ public class Coach_Implementation implements Coach_Service {
     public List<Coach> findAll() {
         return coach_repository.findAll();
     }
+
+    public Coach create(Coach coach) {return coach_repository.save(coach);}
+
+    public Coach update(int id, Coach coach){
+        coach.setCoach_id(id);
+        return coach_repository.save(coach);
+    }
+
+    public void delete(int id){
+        try{
+            coach_repository.deleteById(id);
+        }catch (IllegalAccessError e){
+            throw new IllegalAccessError();
+        }
+    }
 }

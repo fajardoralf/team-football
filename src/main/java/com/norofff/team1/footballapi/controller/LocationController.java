@@ -1,14 +1,12 @@
 package com.norofff.team1.footballapi.controller;
 
 import com.norofff.team1.footballapi.model.Location;
-import com.norofff.team1.footballapi.service.GoalType_Service;
 import com.norofff.team1.footballapi.service.Location_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,4 +29,28 @@ public class LocationController {
         }
     }
 
+    @PostMapping("/location")
+    public ResponseEntity<Location> create(@RequestBody Location location){
+        try{
+            location_service.create(location);
+            return new ResponseEntity<>(location, HttpStatus.ACCEPTED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PutMapping(value = "/location/{id}")
+    public ResponseEntity<Location> update(@PathVariable int id, @RequestBody Location location){
+        try{
+            location_service.update(id, location);
+            return new ResponseEntity<>(location, HttpStatus.ACCEPTED);
+        }catch (DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @DeleteMapping(value = "/location/{id}")
+    public void delete(@PathVariable int id){
+        location_service.delete(id);
+    }
 }

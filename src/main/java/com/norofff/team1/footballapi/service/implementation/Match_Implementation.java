@@ -19,4 +19,19 @@ public class Match_Implementation implements Match_Service {
     public List<Match> findAll() {
         return match_repository.findAll();
     }
+
+    public Match create(Match match) {return match_repository.save(match);}
+
+    public Match update(int id, Match match){
+        match.setMatch_id(id);
+        return match_repository.save(match);
+    }
+
+    public void delete(int id){
+        try{
+            match_repository.deleteById(id);
+        }catch (IllegalAccessError e){
+            throw new IllegalAccessError();
+        }
+    }
 }

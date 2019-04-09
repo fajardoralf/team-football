@@ -21,4 +21,19 @@ public class Association_Implementation implements Association_Service {
     public List<Association> findAll() {
         return association_repository.findAll();
     }
+
+    public Association create(Association association) {return association_repository.save(association);}
+
+    public Association update(int id, Association association){
+        association.setAssociation_id(id);
+        return association_repository.save(association);
+    }
+
+    public void delete(int id){
+        try{
+            association_repository.deleteById(id);
+        }catch (IllegalAccessError e){
+            throw new IllegalAccessError();
+        }
+    }
 }

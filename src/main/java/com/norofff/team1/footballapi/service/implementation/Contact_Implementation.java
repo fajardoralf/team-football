@@ -20,4 +20,19 @@ public class Contact_Implementation implements Contact_Service {
     public List<Contact> findAll() {
         return contact_repository.findAll();
     }
+
+    public Contact create(Contact coach) {return contact_repository.save(coach);}
+
+    public Contact update(int id, Contact contact){
+        contact.setContact_id(id);
+        return contact_repository.save(contact);
+    }
+
+    public void delete(int id){
+        try{
+            contact_repository.deleteById(id);
+        }catch (IllegalAccessError e){
+            throw new IllegalAccessError();
+        }
+    }
 }
