@@ -21,4 +21,13 @@ public class Address_Implementation implements Address_Service {
     public List<Address> findAll() {
         return address_repository.findAll();
     }
+
+    @Override
+    public Address getOne(int id) {return address_repository.getOne(id);}
+    @Override
+    public Address create(Address address) {return address_repository.create(address);}
+    @Override
+    public Address update(int id, Address address){return address_repository.update(id, address);}
+    @Override
+    public boolean delete(int id){return address_repository.delete(id);}
 }
