@@ -24,4 +24,18 @@ public class Person_Implementation implements Person_Service {
 
     public Person create(Person person) {return person_repository.save(person);}
 
+    public Person update(int id, Person person){
+        person.setPerson_id(id);
+        return person_repository.save(person);
+    }
+
+    public void delete(int id){
+        try{
+            person_repository.deleteById(id);
+
+        }catch (IllegalAccessError e){
+            throw new IllegalAccessError();
+        }
+    }
+
 }
