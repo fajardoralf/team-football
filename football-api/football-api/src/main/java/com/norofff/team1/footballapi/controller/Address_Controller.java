@@ -58,12 +58,12 @@ public class Address_Controller {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-
+    */
     @DeleteMapping(value = "/address/{id}")
     public ResponseEntity delete(@PathVariable int id){
         if(address_service.delete(id)){
             return new ResponseEntity(HttpStatus.OK);
         }
         return new ResponseEntity(HttpStatus.BAD_REQUEST);
-    }*/
+    }
 }
