@@ -38,9 +38,20 @@ public class TeamController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+    @PutMapping(value = "/team/{id}")
+    public ResponseEntity<Team> update(@PathVariable int id, @RequestBody Team team){
+        try{
+            team_service.update(id, team);
+            return new ResponseEntity<>(team, HttpStatus.ACCEPTED);
+        }catch (DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 
     @DeleteMapping(value = "/team/{id}")
     public void delete(@PathVariable int id){
         team_service.delete(id);
         }
+
+
 }
