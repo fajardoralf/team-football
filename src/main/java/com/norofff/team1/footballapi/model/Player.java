@@ -20,4 +20,35 @@ public class Player {
 
     public Player() {
     }
+
+    //Full Constructor
+    public Player(int player_id, String normal_position, String number, int person_id, int team_id) {
+        this.player_id = player_id;
+        this.normal_position = normal_position;
+        this.number = number;
+        this.person_id = person_id;
+        this.team_id = team_id;
+    }
+    //Constructor without normal_position (Can be Null)
+    public Player(int player_id, String number, int person_id, int team_id) {
+        this.player_id = player_id;
+        this.number = number;
+        this.person_id = person_id;
+        this.team_id = team_id;
+    }
+    /*
+    //Constructor without number (can be Null)
+    public Player(int player_id, String normal_position, int person_id, int team_id) {
+        this.player_id = player_id;
+        this.normal_position = normal_position;
+        this.person_id = person_id;
+        this.team_id = team_id;
+    }*/
+
+    //Constructor without normal_position or number (Can both be Null)
+    public Player(int player_id, int person_id, int team_id) {
+        this.player_id = player_id;
+        this.person_id = person_id;
+        this.team_id = team_id;
+    }
 }

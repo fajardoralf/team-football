@@ -50,6 +50,22 @@ public class PersonController {
         }
     }
 
+    @PutMapping(value = "/person/{id}")
+    public ResponseEntity<Person> update(@PathVariable int id, @RequestBody Person person){
+        try{
+            person_service.update(id, person);
+            return new ResponseEntity<>(person, HttpStatus.ACCEPTED);
+        }catch (DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @DeleteMapping(value = "/person/{id}")
+    public void delete(@PathVariable int id){
+        person_service.delete(id);
+
+    }
+
 
 
 

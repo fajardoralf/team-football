@@ -10,4 +10,6 @@ public interface Person_Repository extends JpaRepository<Person, Integer> {
 
     Person getOne(Integer integer);
     Person save(Person person);
+
+    void deleteById(int id);
 }

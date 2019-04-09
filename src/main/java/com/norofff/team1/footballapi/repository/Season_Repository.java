@@ -7,4 +7,9 @@ import java.util.List;
 
 public interface Season_Repository extends JpaRepository<Season, Integer> {
     List<Season> findAll();
+
+    Season getOne(Integer integer);
+    Season save(Season season);
+
+    void deleteById(int id);
 }

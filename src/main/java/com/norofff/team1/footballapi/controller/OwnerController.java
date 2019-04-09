@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +27,32 @@ public class OwnerController {
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @PostMapping("/owner")
+    public ResponseEntity<Owner> create(@RequestBody Owner owner){
+        try{
+            owner_service.create(owner);
+            return new ResponseEntity<>(owner, HttpStatus.ACCEPTED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PutMapping(value = "/owner/{id}")
+    public ResponseEntity<Owner> update(@PathVariable int id, @RequestBody Owner owner){
+        try{
+            owner_service.update(id, owner);
+            return new ResponseEntity<>(owner, HttpStatus.ACCEPTED);
+        }catch (DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
+    @DeleteMapping(value = "/address/{id}")
+    public void delete(@PathVariable int id){
+        owner_service.delete(id);
+
     }
 }
