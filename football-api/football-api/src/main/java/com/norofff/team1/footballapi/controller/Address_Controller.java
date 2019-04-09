@@ -49,7 +49,7 @@ public class Address_Controller {
         }
     }
 
-    /*@PutMapping
+    @PutMapping(value = "/address/{id}")
     public ResponseEntity<Address> update(@PathVariable int id, @RequestBody Address address){
         try{
             address_service.update(id, address);
@@ -57,7 +57,7 @@ public class Address_Controller {
         }catch (DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-    }*/
+    }
 
     @DeleteMapping(value = "/address/{id}")
     public void delete(@PathVariable int id){

@@ -4,11 +4,9 @@ import com.norofff.team1.footballapi.model.Address;
 import com.norofff.team1.footballapi.repository.Address_Repository;
 import com.norofff.team1.footballapi.service.Address_Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.zip.DataFormatException;
 
 @Service
 public class Address_Implementation implements Address_Service {
@@ -29,15 +27,14 @@ public class Address_Implementation implements Address_Service {
 
     public Address create(Address address) {return address_repository.save(address);}
 
-    /*public Address update(int id, Address address){
+    public Address update(int id, Address address){
         address.setAddress_id(id);
         return address_repository.save(address);
-    }*/
+    }
 
     public void delete(int id){
         try{
             address_repository.deleteById(id);
-
         }catch (IllegalAccessError e){
             throw new IllegalAccessError();
         }
