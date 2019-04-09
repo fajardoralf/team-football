@@ -23,13 +23,21 @@ public class Team_Implementation implements Team_Service {
         return team_repository.findAll();
     }
 
-    @Override
     public Team getOne(int id) {return team_repository.getOne(id);}
-    @Override
-    public Team create(Team team) {return team_repository.save(team);}
-    @Override
-    public Team update(int id, Team team){return team_repository.update(id, team);}
-    @Override
-    public void delete(int id){team_repository.deleteById(id);}
 
+
+    public Team create(Team team) {return team_repository.save(team);}
+
+    public Team update(int id, Team team){
+        team.setTeam_id(id);
+        return team_repository.save(team);
+    }
+
+    public void delete(int id){
+        try{
+            team_repository.deleteById(id);
+        }catch (IllegalAccessError e){
+            throw new IllegalAccessError();
+        }
+    }
 }

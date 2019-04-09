@@ -10,6 +10,6 @@ public interface Team_Repository extends JpaRepository<Team, Integer> {
 
     Team getOne(int id);
     Team save(Team team);
-    Team update(int id, Team address);
+    Team update(int id, Team team);
     void deleteById(int id);
 }

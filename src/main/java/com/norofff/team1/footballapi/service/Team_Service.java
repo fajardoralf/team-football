@@ -10,6 +10,6 @@ public interface Team_Service {
 
     Team getOne(int id);
     Team create(Team team);
-    Team update(int id, Team address);
+    Team update(int id, Team team);
     void delete(int id);
 }
