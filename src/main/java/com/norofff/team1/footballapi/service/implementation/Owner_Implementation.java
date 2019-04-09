@@ -23,4 +23,22 @@ public class Owner_Implementation implements Owner_Service {
     public List<Owner> findAll() {
         return owner_repository.findAll();
     }
+
+    public Owner getOne(int id) {return owner_repository.getOne(id);}
+
+
+    public Owner create(Owner owner) {return owner_repository.save(owner);}
+
+    public Owner update(int id, Owner owner){
+        owner.setOwner_id(id);
+        return owner_repository.save(owner);
+    }
+
+    public void delete(int id){
+        try{
+            owner_repository.deleteById(id);
+        }catch (IllegalAccessError e){
+            throw new IllegalAccessError();
+        }
+    }
 }

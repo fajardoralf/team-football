@@ -20,4 +20,22 @@ public class Season_Implementation implements Season_Service {
         return season_repository.findAll();
     }
 
+    public Season getOne(int id) {return season_repository.getOne(id);}
+
+
+    public Season create(Season season) {return season_repository.save(season);}
+
+    public Season update(int id, Season season){
+        season.setSeason_id(id);
+        return season_repository.save(season);
+    }
+
+    public void delete(int id){
+        try{
+            season_repository.deleteById(id);
+        }catch (IllegalAccessError e){
+            throw new IllegalAccessError();
+        }
+    }
+
 }
