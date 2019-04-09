@@ -29,6 +29,16 @@ public class GoalTypeController {
         }
     }
 
+    @GetMapping("goaltype/{id}")
+    public ResponseEntity<GoalType> getOne(@PathVariable int id){
+        try{
+            GoalType goalType = goalType_service.getOne(id);
+            return new ResponseEntity<>(goalType, HttpStatus.FOUND);
+        }catch(DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @PostMapping("/goaltype")
     public ResponseEntity<GoalType> create(@RequestBody GoalType contact){
         try{
@@ -53,5 +63,4 @@ public class GoalTypeController {
     public void delete(@PathVariable int id){
         goalType_service.delete(id);
     }
-
 }

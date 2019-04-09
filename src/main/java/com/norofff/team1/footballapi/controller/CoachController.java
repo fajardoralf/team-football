@@ -29,6 +29,16 @@ public class CoachController {
         }
     }
 
+    @GetMapping("coach/{id}")
+    public ResponseEntity<Coach> getOne(@PathVariable int id){
+        try{
+            Coach coach = coach_service.getOne(id);
+            return new ResponseEntity<>(coach, HttpStatus.FOUND);
+        }catch(DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @PostMapping("/coach")
     public ResponseEntity<Coach> create(@RequestBody Coach coach){
         try{
@@ -48,7 +58,6 @@ public class CoachController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-
 
     @DeleteMapping(value = "/coach/{id}")
     public void delete(@PathVariable int id){

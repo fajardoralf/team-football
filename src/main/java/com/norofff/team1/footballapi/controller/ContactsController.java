@@ -29,6 +29,16 @@ public class ContactsController {
         }
     }
 
+    @GetMapping("contact/{id}")
+    public ResponseEntity<Contact> getOne(@PathVariable int id){
+        try{
+            Contact contact = contact_service.getOne(id);
+            return new ResponseEntity<>(contact, HttpStatus.FOUND);
+        }catch(DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @PostMapping("/contact")
     public ResponseEntity<Contact> create(@RequestBody Contact contact){
         try{

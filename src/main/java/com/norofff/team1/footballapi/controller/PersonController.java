@@ -63,11 +63,6 @@ public class PersonController {
     @DeleteMapping(value = "/person/{id}")
     public void delete(@PathVariable int id){
         person_service.delete(id);
-
     }
-
-
-
-
 }
 

@@ -13,6 +13,5 @@ public interface Player_Service {
     Player getOne(int id);
     Player create(Player player);
     Player update(int id, Player player);
-
     void delete(int id);
 }

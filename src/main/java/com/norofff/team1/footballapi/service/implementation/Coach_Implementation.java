@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public class Coach_Implementation implements Coach_Service {
+
     private final Coach_Repository coach_repository;
     @Autowired
     public Coach_Implementation(Coach_Repository coach_repository){
@@ -18,6 +19,8 @@ public class Coach_Implementation implements Coach_Service {
     public List<Coach> findAll() {
         return coach_repository.findAll();
     }
+
+    public Coach getOne(int id) {return coach_repository.getOne(id);}
 
     public Coach create(Coach coach) {return coach_repository.save(coach);}
 

@@ -29,6 +29,16 @@ public class TeamController {
         }
     }
 
+    @GetMapping("team/{id}")
+    public ResponseEntity<Team> getOne(@PathVariable int id){
+        try{
+            Team team = team_service.getOne(id);
+            return new ResponseEntity<>(team, HttpStatus.FOUND);
+        }catch(DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @PostMapping("/team")
     public ResponseEntity<Team> create(@RequestBody Team team){
         try{
@@ -38,6 +48,7 @@ public class TeamController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
     @PutMapping(value = "/team/{id}")
     public ResponseEntity<Team> update(@PathVariable int id, @RequestBody Team team){
         try{
@@ -52,6 +63,4 @@ public class TeamController {
     public void delete(@PathVariable int id){
         team_service.delete(id);
         }
-
-
 }

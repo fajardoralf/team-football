@@ -7,4 +7,8 @@ import java.util.List;
 
 public interface Result_Repository extends JpaRepository<Result, Integer> {
         List<Result> findAll();
+        Result getOne(Integer integer);
+        Result save(Result result);
+
+        void deleteById(int id);
 }

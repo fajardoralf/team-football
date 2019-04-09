@@ -8,6 +8,7 @@ import java.util.List;
 public interface Association_Repository extends JpaRepository<Association, Integer> {
     List<Association> findAll();
 
+    Association getOne(Integer integer);
     Association save(Association association);
 
     void deleteById(int id);

@@ -20,6 +20,8 @@ public class Match_Implementation implements Match_Service {
         return match_repository.findAll();
     }
 
+    public Match getOne(int id) {return match_repository.getOne(id);}
+
     public Match create(Match match) {return match_repository.save(match);}
 
     public Match update(int id, Match match){

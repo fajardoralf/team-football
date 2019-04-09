@@ -29,6 +29,16 @@ public class OwnerController {
         }
     }
 
+    @GetMapping("owner/{id}")
+    public ResponseEntity<Owner> getOne(@PathVariable int id){
+        try{
+            Owner owner = owner_service.getOne(id);
+            return new ResponseEntity<>(owner, HttpStatus.FOUND);
+        }catch(DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @PostMapping("/owner")
     public ResponseEntity<Owner> create(@RequestBody Owner owner){
         try{
@@ -49,8 +59,7 @@ public class OwnerController {
         }
     }
 
-
-    @DeleteMapping(value = "/address/{id}")
+    @DeleteMapping(value = "/owner/{id}")
     public void delete(@PathVariable int id){
         owner_service.delete(id);
 

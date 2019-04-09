@@ -26,7 +26,6 @@ public class Owner_Implementation implements Owner_Service {
 
     public Owner getOne(int id) {return owner_repository.getOne(id);}
 
-
     public Owner create(Owner owner) {return owner_repository.save(owner);}
 
     public Owner update(int id, Owner owner){

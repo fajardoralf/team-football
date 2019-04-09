@@ -10,7 +10,5 @@ public interface Address_Service {
     Address getOne(int id);
     Address create(Address address);
     Address update(int id, Address address);
-
     void delete(int id);
-
 }

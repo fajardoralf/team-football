@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +27,40 @@ public class ResultController {
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @GetMapping("result/{id}")
+    public ResponseEntity<Result> getOne(@PathVariable int id){
+        try{
+            Result result = result_service.getOne(id);
+            return new ResponseEntity<>(result, HttpStatus.FOUND);
+        }catch(DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("/result")
+    public ResponseEntity<Result> create(@RequestBody Result result){
+        try{
+            result_service.create(result);
+            return new ResponseEntity<>(result, HttpStatus.ACCEPTED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PutMapping(value = "/result/{id}")
+    public ResponseEntity<Result> update(@PathVariable int id, @RequestBody Result result){
+        try{
+            result_service.update(id, result);
+            return new ResponseEntity<>(result, HttpStatus.ACCEPTED);
+        }catch (DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @DeleteMapping(value = "/result/{id}")
+    public void delete(@PathVariable int id){
+        result_service.delete(id);
     }
 }

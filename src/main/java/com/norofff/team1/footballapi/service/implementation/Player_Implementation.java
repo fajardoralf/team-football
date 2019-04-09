@@ -25,7 +25,6 @@ public class Player_Implementation implements Player_Service {
 
     public Player getOne(int id) {return player_repository.getOne(id);}
 
-
     public Player create(Player player) {return player_repository.save(player);}
 
     public Player update(int id, Player player){
@@ -41,6 +40,4 @@ public class Player_Implementation implements Player_Service {
             throw new IllegalAccessError();
         }
     }
-
-
 }

@@ -22,4 +22,22 @@ public class Result_Implementation implements Result_Service {
     public List<Result> findAll() {
         return result_repository.findAll();
     }
+
+    public Result getOne(int id) {return result_repository.getOne(id);}
+
+    public Result create(Result result) {return result_repository.save(result);}
+
+    public Result update(int id, Result result){
+        result.setMatch_id(id);
+        return result_repository.save(result);
+    }
+
+    public void delete(int id){
+        try{
+            result_repository.deleteById(id);
+
+        }catch (IllegalAccessError e){
+            throw new IllegalAccessError();
+        }
+    }
 }

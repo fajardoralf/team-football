@@ -17,6 +17,8 @@ public class GoalType_Implementation implements GoalType_Service {
         this.goalType_repository = goalType_repository;
     }
 
+    public GoalType getOne(int id) {return goalType_repository.getOne(id);}
+
     public List<GoalType> findAll() {
         return goalType_repository.findAll();
     }

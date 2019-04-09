@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +27,40 @@ public class SeasonController {
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @GetMapping("season/{id}")
+    public ResponseEntity<Season> getOne(@PathVariable int id){
+        try{
+            Season season = season_service.getOne(id);
+            return new ResponseEntity<>(season, HttpStatus.FOUND);
+        }catch(DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("/season")
+    public ResponseEntity<Season> create(@RequestBody Season season){
+        try{
+            season_service.create(season);
+            return new ResponseEntity<>(season, HttpStatus.ACCEPTED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PutMapping(value = "/season/{id}")
+    public ResponseEntity<Season> update(@PathVariable int id, @RequestBody Season season){
+        try{
+            season_service.update(id, season);
+            return new ResponseEntity<>(season, HttpStatus.ACCEPTED);
+        }catch (DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @DeleteMapping(value = "/season/{id}")
+    public void delete(@PathVariable int id){
+        season_service.delete(id);
     }
 }

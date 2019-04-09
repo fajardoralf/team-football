@@ -25,7 +25,6 @@ public class Team_Implementation implements Team_Service {
 
     public Team getOne(int id) {return team_repository.getOne(id);}
 
-
     public Team create(Team team) {return team_repository.save(team);}
 
     public Team update(int id, Team team){

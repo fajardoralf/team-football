@@ -10,6 +10,5 @@ public interface Owner_Service {
     Owner getOne(int id);
     Owner create(Owner owner);
     Owner update(int id, Owner owner);
-
     void delete(int id);
 }

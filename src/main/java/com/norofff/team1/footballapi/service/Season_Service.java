@@ -11,7 +11,6 @@ public interface Season_Service {
     Season getOne(int id);
     Season create(Season season);
     Season update(int id, Season season);
-
     void delete(int id);
 }
 

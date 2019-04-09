@@ -28,6 +28,16 @@ public class MatchController {
         }
     }
 
+    @GetMapping("match/{id}")
+    public ResponseEntity<Match> getOne(@PathVariable int id){
+        try{
+            Match match = match_service.getOne(id);
+            return new ResponseEntity<>(match, HttpStatus.FOUND);
+        }catch(DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @PostMapping("/match")
     public ResponseEntity<Match> create(@RequestBody Match match){
         try{

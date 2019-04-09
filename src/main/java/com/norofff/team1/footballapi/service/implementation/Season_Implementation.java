@@ -22,7 +22,6 @@ public class Season_Implementation implements Season_Service {
 
     public Season getOne(int id) {return season_repository.getOne(id);}
 
-
     public Season create(Season season) {return season_repository.save(season);}
 
     public Season update(int id, Season season){
@@ -37,5 +36,4 @@ public class Season_Implementation implements Season_Service {
             throw new IllegalAccessError();
         }
     }
-
 }

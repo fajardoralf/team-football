@@ -29,6 +29,16 @@ public class AssociationController {
         }
     }
 
+    @GetMapping("association/{id}")
+    public ResponseEntity<Association> getOne(@PathVariable int id){
+        try{
+            Association association = association_service.getOne(id);
+            return new ResponseEntity<>(association, HttpStatus.FOUND);
+        }catch(DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @PostMapping("/association")
     public ResponseEntity<Association> create(@RequestBody Association association){
         try{
@@ -48,7 +58,6 @@ public class AssociationController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-
 
     @DeleteMapping(value = "/association/{id}")
     public void delete(@PathVariable int id){

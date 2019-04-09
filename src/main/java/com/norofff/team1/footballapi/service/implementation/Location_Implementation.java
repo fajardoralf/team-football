@@ -16,6 +16,8 @@ public class Location_Implementation implements Location_Service {
         this.location_repository = location_repository;
     }
 
+    public Location getOne(int id) {return location_repository.getOne(id);}
+
     public List<Location> findAll() {
         return location_repository.findAll();
     }

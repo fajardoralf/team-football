@@ -17,6 +17,8 @@ public class Contact_Implementation implements Contact_Service {
         this.contact_repository = contact_repository;
     }
 
+    public Contact getOne(int id) {return contact_repository.getOne(id);}
+
     public List<Contact> findAll() {
         return contact_repository.findAll();
     }

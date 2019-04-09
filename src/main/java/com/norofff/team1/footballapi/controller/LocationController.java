@@ -29,6 +29,16 @@ public class LocationController {
         }
     }
 
+    @GetMapping("location/{id}")
+    public ResponseEntity<Location> getOne(@PathVariable int id){
+        try{
+            Location location = location_service.getOne(id);
+            return new ResponseEntity<>(location, HttpStatus.FOUND);
+        }catch(DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @PostMapping("/location")
     public ResponseEntity<Location> create(@RequestBody Location location){
         try{

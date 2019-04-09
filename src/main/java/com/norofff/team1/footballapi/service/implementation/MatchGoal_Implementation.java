@@ -20,6 +20,8 @@ public class MatchGoal_Implementation implements MatchGoal_Service {
         return matchGoal_repository.findAll();
     }
 
+    public MatchGoal getOne(int id) {return matchGoal_repository.getOne(id);}
+
     public MatchGoal create(MatchGoal matchGoal) {return matchGoal_repository.save(matchGoal);}
 
     public MatchGoal update(int id, MatchGoal matchGoal){

@@ -20,14 +20,12 @@ public class MatchPosition {
     @EmbeddedId MatchPositionId id;
 
     public MatchPosition(){}
-
-
 }
 
+@Data
 @Embeddable
 class MatchPositionId implements Serializable {
     private int player_id;
     private int match_id;
-
 }
 

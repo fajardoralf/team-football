@@ -18,6 +18,8 @@ public class Association_Implementation implements Association_Service {
         this.association_repository = association_repository;
     }
 
+    public Association getOne(int id) {return association_repository.getOne(id);}
+
     public List<Association> findAll() {
         return association_repository.findAll();
     }

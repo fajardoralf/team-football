@@ -8,7 +8,7 @@ import java.util.List;
 public interface Contact_Repository extends JpaRepository<Contact, Integer> {
     List<Contact> findAll();
 
+    Contact getOne(Integer integer);
     Contact save(Contact association);
-
     void deleteById(int id);
 }

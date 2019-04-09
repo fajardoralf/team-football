@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface Coach_Repository extends JpaRepository<Coach, Integer> {
     List<Coach> findAll();
-    Coach save(Coach association);
 
+    Coach getOne(Integer integer);
+    Coach save(Coach association);
     void deleteById(int id);
 }

@@ -7,4 +7,8 @@ import java.util.List;
 
 public interface Player_Repository extends JpaRepository<Player, Integer> {
     List<Player> findAll();
+
+    Player getOne(Integer integer);
+    Player save(Player player);
+    void deleteById(int id);
 }

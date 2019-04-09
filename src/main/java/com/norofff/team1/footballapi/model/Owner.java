@@ -17,6 +17,10 @@ public class Owner {
 
     public Owner(){}
 
+    public Owner(int person_id) {
+        this.person_id = person_id;
+    }
+
     public Owner(int owner_id, int person_id) {
         this.owner_id = owner_id;
         this.person_id = person_id;

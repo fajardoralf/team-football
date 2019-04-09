@@ -29,6 +29,16 @@ public class MatchGoalController {
         }
     }
 
+    @GetMapping("matchgoal/{id}")
+    public ResponseEntity<MatchGoal> getOne(@PathVariable int id){
+        try{
+            MatchGoal matchGoal = matchGoal_service.getOne(id);
+            return new ResponseEntity<>(matchGoal, HttpStatus.FOUND);
+        }catch(DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @PostMapping("/matchgoal")
     public ResponseEntity<MatchGoal> create(@RequestBody MatchGoal matchGoal){
         try{
