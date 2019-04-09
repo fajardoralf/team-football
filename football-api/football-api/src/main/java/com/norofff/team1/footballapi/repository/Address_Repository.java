@@ -12,4 +12,5 @@ public interface Address_Repository extends JpaRepository<Address, Integer> {
     Address save(Address address);
 
     void deleteById(int id);
+
 }

@@ -7,4 +7,7 @@ import java.util.List;
 
 public interface Person_Repository extends JpaRepository<Person, Integer> {
     List<Person> findAll();
+
+    Person getOne(Integer integer);
+    Person save(Person person);
 }

@@ -59,8 +59,10 @@ public class Address_Controller {
         }
     }
 
+
     @DeleteMapping(value = "/address/{id}")
     public void delete(@PathVariable int id){
         address_service.delete(id);
+
     }
 }
