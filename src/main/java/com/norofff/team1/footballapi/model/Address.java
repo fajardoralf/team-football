@@ -35,5 +35,4 @@ public class Address {
         this.address_line_3 = address_line_3;
     }
 
-
 }
