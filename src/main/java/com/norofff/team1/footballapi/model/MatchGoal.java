@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -14,12 +12,28 @@ import javax.persistence.Table;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class MatchGoal {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int goal_id;    //Primary key
-    private String description;
+    private String description; //Can be Null
     private int goal_type_id;   //Foreign key
     private int match_id;       //Foreign key
     private int player_id;      //Foreign key
 
 
     public MatchGoal () {}
+
+    public MatchGoal(int goal_id, String description, int goal_type_id, int match_id, int player_id) {
+        this.goal_id = goal_id;
+        this.description = description;
+        this.goal_type_id = goal_type_id;
+        this.match_id = match_id;
+        this.player_id = player_id;
+    }
+    //Without description --> can be Null
+    public MatchGoal(int goal_id, int goal_type_id, int match_id, int player_id) {
+        this.goal_id = goal_id;
+        this.goal_type_id = goal_type_id;
+        this.match_id = match_id;
+        this.player_id = player_id;
+    }
 }

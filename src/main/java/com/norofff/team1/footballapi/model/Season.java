@@ -27,4 +27,11 @@ public class Season {
         this.name = name;
         this.description = description;
     }
+    //Without description (Can be Null)
+    public Season(int season_id, int start_date, int end_date, String name) {
+        this.season_id = season_id;
+        this.start_date = start_date;
+        this.end_date = end_date;
+        this.name = name;
+    }
 }

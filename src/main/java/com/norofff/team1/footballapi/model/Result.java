@@ -3,9 +3,7 @@ package com.norofff.team1.footballapi.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -14,8 +12,15 @@ import javax.persistence.Table;
 public class Result {
     private int score;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int match_id;   //Primary Key
     private int team_id;
 
     public Result(){}
+
+    public Result(int score, int match_id, int team_id) {
+        this.score = score;
+        this.match_id = match_id;
+        this.team_id = team_id;
+    }
 }

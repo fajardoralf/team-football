@@ -15,7 +15,7 @@ public class Person{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int person_id;  //Primary key
-    private int address_id; //Foreign key (can be Null)
+    private int address_id; //Foreign key (can be Null) NEED BUG FIX, FOREGIN KEY CAN NOT!! BE NULL
     private String first_name;
     private String last_name;
     private Date date_of_birth;

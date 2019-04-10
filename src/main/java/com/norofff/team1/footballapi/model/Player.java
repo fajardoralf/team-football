@@ -36,7 +36,7 @@ public class Player {
         this.person_id = person_id;
         this.team_id = team_id;
     }
-    /*
+    /*NEED BUG FIX!! TWO CONSTRUCTORS WITH THE SAME SIGNATURE!!
     //Constructor without number (can be Null)
     public Player(int player_id, String normal_position, int person_id, int team_id) {
         this.player_id = player_id;
