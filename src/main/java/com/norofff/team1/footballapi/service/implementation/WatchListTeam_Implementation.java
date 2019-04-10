@@ -26,7 +26,7 @@ public class WatchListTeam_Implementation implements WatchListTeam_Service {
     public WatchListTeam create(WatchListTeam watchListTeam) {return watchListTeam_repository.save(watchListTeam);}
 
     public WatchListTeam update(int id, WatchListTeam watchListTeam){
-        watchListTeam.setWatchListTeam_id(id);
+        watchListTeam.setWatchList_team_id(id);
         return watchListTeam_repository.save(watchListTeam);
     }
 
