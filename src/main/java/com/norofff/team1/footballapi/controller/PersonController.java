@@ -4,6 +4,7 @@ import com.norofff.team1.footballapi.model.Person;
 import com.norofff.team1.footballapi.service.Person_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +41,7 @@ public class PersonController {
         }
     }
 
+    @CrossOrigin(origins = "https://team-football-react.herokuapp.com/")
     @PostMapping("/person")
     public ResponseEntity<Person> create(@RequestBody Person person){
         try{
