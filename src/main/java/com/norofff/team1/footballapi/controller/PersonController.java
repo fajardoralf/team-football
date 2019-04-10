@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@CrossOrigin(origins = "https://team-football-react.herokuapp.com/")
 @RestController
 public class PersonController {
     private final Person_Service person_service;
@@ -41,7 +41,6 @@ public class PersonController {
         }
     }
 
-    @CrossOrigin(origins = "https://team-football-react.herokuapp.com/")
     @PostMapping("/person")
     public ResponseEntity<Person> create(@RequestBody Person person){
         try{
