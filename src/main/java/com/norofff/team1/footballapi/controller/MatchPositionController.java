@@ -7,6 +7,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -26,6 +28,16 @@ public class MatchPositionController {
             List<MatchPosition> matchPositions = matchPosition_service.findAll();
             return new ResponseEntity<>(matchPositions, HttpStatus.FOUND);
         } catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("/matchposition")
+    public ResponseEntity<MatchPosition> create(@RequestBody MatchPosition matchPosition){
+        try{
+            matchPosition_service.create(matchPosition);
+            return new ResponseEntity<>(matchPosition, HttpStatus.ACCEPTED);
+        }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }

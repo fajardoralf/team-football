@@ -17,7 +17,8 @@ import java.io.Serializable;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class MatchPosition {
     private String position;
-    @EmbeddedId MatchPositionId id;
+    @EmbeddedId
+    private MatchPositionId id;
 
     public MatchPosition(){}
 }

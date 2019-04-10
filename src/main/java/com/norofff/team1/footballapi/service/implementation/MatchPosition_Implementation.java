@@ -21,7 +21,7 @@ public class MatchPosition_Implementation implements MatchPosition_Service {
         return matchPosition_repository.findAll();
     }
 
-    public MatchPosition create(MatchPosition matchGoal) {return matchPosition_repository.save(matchGoal);}
+    public MatchPosition create(MatchPosition matchPosition) {return matchPosition_repository.save(matchPosition);}
 
     /*public MatchPosition update(MatchPositionId id, MatchPosition matchPosition){
         matchPosition.setId(id);

@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface MatchPosition_Repository extends JpaRepository<MatchPosition, Integer> {
     List<MatchPosition> findAll();
+
+    MatchPosition save(MatchPosition matchPosition);
 }
