@@ -13,15 +13,15 @@ import javax.persistence.*;
 public class WatchListTeam {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int watchList_team_id;
+    private int watchlist_team_id;
     private int user_id;
-    private int player_id;
+    private int team_id;
 
     WatchListTeam () {}
 
-    public WatchListTeam(int watchlist_team_id, int user_id, int player_id) {
-        this.watchList_team_id = watchlist_team_id;
+    public WatchListTeam(int watchlist_team_id, int user_id, int team_id) {
+        this.watchlist_team_id = watchlist_team_id;
         this.user_id = user_id;
-        this.player_id = player_id;
+        this.team_id = team_id;
     }
 }
