@@ -24,13 +24,13 @@ public class Person{
     //Default Constructor
     public Person() {}
 
-    //NO address_id Constructor
-    public Person(int person_id, String first_name, String last_name, Date date_of_birth) {
-        this.person_id = person_id;
+    public Person(int address_id, String first_name, String last_name, Date date_of_birth) {
+        this.address_id = address_id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.date_of_birth = date_of_birth;
     }
+
     //Full Constructor
     public Person(int person_id, int address_id, String first_name, String last_name, Date date_of_birth) {
         this.person_id = person_id;
