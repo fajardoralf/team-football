@@ -18,4 +18,8 @@ public class GoalType {
 
     public GoalType(){}
 
+    public GoalType(int goal_type_id, String type) {
+        this.goal_type_id = goal_type_id;
+        this.type = type;
+    }
 }

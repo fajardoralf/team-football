@@ -17,4 +17,9 @@ public class Coach {
     private int person_id;
 
     public Coach(){}
+
+    public Coach(int coach_id, int person_id) {
+        this.coach_id = coach_id;
+        this.person_id = person_id;
+    }
 }
