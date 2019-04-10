@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 @RestController
 public class WatchListTeamController {
@@ -26,6 +27,8 @@ public class WatchListTeamController {
             return new ResponseEntity<>(watchListTeam, HttpStatus.FOUND);
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
@@ -36,6 +39,8 @@ public class WatchListTeamController {
             return new ResponseEntity<>(watchListTeam, HttpStatus.FOUND);
         }catch(DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
@@ -46,6 +51,8 @@ public class WatchListTeamController {
             return new ResponseEntity<>(watchListTeam, HttpStatus.ACCEPTED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
@@ -56,6 +63,8 @@ public class WatchListTeamController {
             return new ResponseEntity<>(watchListTeam, HttpStatus.ACCEPTED);
         }catch (DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
