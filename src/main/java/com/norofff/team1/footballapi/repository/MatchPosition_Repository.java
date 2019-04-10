@@ -1,6 +1,7 @@
 package com.norofff.team1.footballapi.repository;
 
 import com.norofff.team1.footballapi.model.MatchPosition;
+import com.norofff.team1.footballapi.model.MatchPositionId;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.transaction.Transactional;
