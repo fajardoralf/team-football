@@ -2,19 +2,18 @@ package com.norofff.team1.footballapi.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name = "contact")
 public class Contact {
     @Id
-    private int contact_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int contact_id;         //Primary Key
     private String contact_type;
     private String contact_detail;
-    private int person_id;
+    private int person_id;          //Foregin Key
 
     public Contact() {
 
