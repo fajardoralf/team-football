@@ -25,7 +25,7 @@ public class PlayerController {
     public ResponseEntity<List<Player>> findAll() {
         try {
             List<Player> character_classes = player_service.findAll();
-            return new ResponseEntity<>(character_classes, HttpStatus.FOUND);
+            return new ResponseEntity<>(character_classes, HttpStatus.OK);
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -37,7 +37,7 @@ public class PlayerController {
     public ResponseEntity<Player> getOne(@PathVariable int id){
         try{
             Player player = player_service.getOne(id);
-            return new ResponseEntity<>(player, HttpStatus.FOUND);
+            return new ResponseEntity<>(player, HttpStatus.OK);
         }catch(DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -49,7 +49,7 @@ public class PlayerController {
     public ResponseEntity<Player> create(@RequestBody Player player){
         try{
             player_service.create(player);
-            return new ResponseEntity<>(player, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(player, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
