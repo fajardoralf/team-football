@@ -1,13 +1,11 @@
 package com.norofff.team1.footballapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.norofff.team1.footballapi.repository.MatchPositionId;
 import lombok.Data;
 
 
-import javax.persistence.Embeddable;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import java.io.Serializable;
 
@@ -16,16 +14,16 @@ import java.io.Serializable;
 @Table(name = "match_position")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class MatchPosition {
+    @EmbeddedId
+    MatchPositionId id;
     private String position;
-    @EmbeddedId MatchPositionId id;
 
     public MatchPosition(){}
+
+    public MatchPosition(MatchPositionId matchPosId, String position) {
+        this.id = matchPosId;
+        this.position = position;
+    }
 }
 
-@Data
-@Embeddable
-class MatchPositionId implements Serializable {
-    private int player_id;
-    private int match_id;
-}
 
