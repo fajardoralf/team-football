@@ -26,7 +26,7 @@ public class WatchListPLayer_Implementation implements WatchListPlayer_Service {
     public WatchListPlayer create(WatchListPlayer watchListPlayer) {return watchListPlayer_repository.save(watchListPlayer);}
 
     public WatchListPlayer update(int id, WatchListPlayer watchListPlayer){
-        watchListPlayer.setWatchList_player_id(id);
+        watchListPlayer.setWatchlist_player_id(id);
         return watchListPlayer_repository.save(watchListPlayer);
     }
 
