@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 
 @RestController
@@ -41,6 +42,7 @@ public class MatchPositionController {
     }
 
     /*@PostMapping("/matchposition")
+
     public ResponseEntity<MatchPosition> create(@RequestBody MatchPosition matchPosition){
         try{
             matchPosition_service.create(matchPosition);
@@ -48,6 +50,7 @@ public class MatchPositionController {
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+
     }*/
 
     /*@PutMapping(value = "/matchposition/{id}")
@@ -64,4 +67,5 @@ public class MatchPositionController {
     public void delete(@PathVariable int id){
         matchPosition_service.delete(id);
     }*/
+
 }
