@@ -34,6 +34,8 @@ public class MatchPositionController {
             return new ResponseEntity<>(matchPositions, HttpStatus.FOUND);
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 

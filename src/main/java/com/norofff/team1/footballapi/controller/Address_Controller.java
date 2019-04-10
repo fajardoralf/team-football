@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -28,6 +29,9 @@ public class Address_Controller {
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+        catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("address/{id}")
@@ -37,6 +41,8 @@ public class Address_Controller {
             return new ResponseEntity<>(address, HttpStatus.FOUND);
         }catch(DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
@@ -47,6 +53,8 @@ public class Address_Controller {
             return new ResponseEntity<>(address, HttpStatus.ACCEPTED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
@@ -57,6 +65,8 @@ public class Address_Controller {
             return new ResponseEntity<>(address, HttpStatus.ACCEPTED);
         }catch (DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
