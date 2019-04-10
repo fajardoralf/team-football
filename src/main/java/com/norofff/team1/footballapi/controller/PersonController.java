@@ -26,7 +26,7 @@ public class PersonController {
     public ResponseEntity<List<Person>> findAll() {
         try {
             List<Person> character_classes = person_service.findAll();
-            return new ResponseEntity<>(character_classes, HttpStatus.FOUND);
+            return new ResponseEntity<>(character_classes, HttpStatus.OK);
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -38,7 +38,7 @@ public class PersonController {
     public ResponseEntity<Person> getOne(@PathVariable int id){
         try{
             Person person = person_service.getOne(id);
-            return new ResponseEntity<>(person, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(person, HttpStatus.OK);
         } catch (DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -50,7 +50,7 @@ public class PersonController {
     public ResponseEntity<Person> create(@RequestBody Person person){
         try{
             person_service.create(person);
-            return new ResponseEntity<>(person, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(person, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
