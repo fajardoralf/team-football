@@ -25,7 +25,7 @@ public class UserController {
     public ResponseEntity<List<Users>> findAll() {
         try {
             List<Users> character_classes = user_service.findAll();
-            return new ResponseEntity<>(character_classes, HttpStatus.FOUND);
+            return new ResponseEntity<>(character_classes, HttpStatus.OK);
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -37,7 +37,7 @@ public class UserController {
     public ResponseEntity<Users> getOne(@PathVariable int id){
         try{
             Users team = user_service.getOne(id);
-            return new ResponseEntity<>(team, HttpStatus.FOUND);
+            return new ResponseEntity<>(team, HttpStatus.OK);
         }catch(DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -49,7 +49,7 @@ public class UserController {
     public ResponseEntity<Users> create(@RequestBody Users users){
         try{
             user_service.create(users);
-            return new ResponseEntity<>(users, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(users, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){

@@ -24,7 +24,7 @@ public class WatchListTeamController {
     public ResponseEntity<List<WatchListTeam>> findAll() {
         try {
             List<WatchListTeam> watchListTeam = watchListTeam_service.findAll();
-            return new ResponseEntity<>(watchListTeam, HttpStatus.FOUND);
+            return new ResponseEntity<>(watchListTeam, HttpStatus.OK);
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -36,7 +36,7 @@ public class WatchListTeamController {
     public ResponseEntity<WatchListTeam> getOne(@PathVariable int id){
         try{
             WatchListTeam watchListTeam = watchListTeam_service.getOne(id);
-            return new ResponseEntity<>(watchListTeam, HttpStatus.FOUND);
+            return new ResponseEntity<>(watchListTeam, HttpStatus.OK);
         }catch(DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -48,7 +48,7 @@ public class WatchListTeamController {
     public ResponseEntity<WatchListTeam> create(@RequestBody WatchListTeam watchListTeam){
         try{
             watchListTeam_service.create(watchListTeam);
-            return new ResponseEntity<>(watchListTeam, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(watchListTeam, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){

@@ -25,7 +25,7 @@ public class GoalTypeController {
     public ResponseEntity<List<GoalType>> findAll() {
         try {
             List<GoalType> goalTypes = goalType_service.findAll();
-            return new ResponseEntity<>(goalTypes, HttpStatus.FOUND);
+            return new ResponseEntity<>(goalTypes, HttpStatus.OK);
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -37,7 +37,7 @@ public class GoalTypeController {
     public ResponseEntity<GoalType> getOne(@PathVariable int id){
         try{
             GoalType goalType = goalType_service.getOne(id);
-            return new ResponseEntity<>(goalType, HttpStatus.FOUND);
+            return new ResponseEntity<>(goalType, HttpStatus.OK);
         }catch(DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -49,7 +49,7 @@ public class GoalTypeController {
     public ResponseEntity<GoalType> create(@RequestBody GoalType contact){
         try{
             goalType_service.create(contact);
-            return new ResponseEntity<>(contact, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(contact, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){

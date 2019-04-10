@@ -25,7 +25,7 @@ public class MatchController {
     public ResponseEntity<List<Match>> findAll() {
         try {
             List<Match> matches = match_service.findAll();
-            return new ResponseEntity<>(matches, HttpStatus.FOUND);
+            return new ResponseEntity<>(matches, HttpStatus.OK);
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -37,7 +37,7 @@ public class MatchController {
     public ResponseEntity<Match> getOne(@PathVariable int id){
         try{
             Match match = match_service.getOne(id);
-            return new ResponseEntity<>(match, HttpStatus.FOUND);
+            return new ResponseEntity<>(match, HttpStatus.OK);
         }catch(DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -49,7 +49,7 @@ public class MatchController {
     public ResponseEntity<Match> create(@RequestBody Match match){
         try{
             match_service.create(match);
-            return new ResponseEntity<>(match, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(match, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){

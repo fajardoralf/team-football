@@ -25,7 +25,7 @@ public class MatchGoalController {
     public ResponseEntity<List<MatchGoal>> findAll() {
         try {
             List<MatchGoal> matchGoals = matchGoal_service.findAll();
-            return new ResponseEntity<>(matchGoals, HttpStatus.FOUND);
+            return new ResponseEntity<>(matchGoals, HttpStatus.OK);
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -37,7 +37,7 @@ public class MatchGoalController {
     public ResponseEntity<MatchGoal> getOne(@PathVariable int id){
         try{
             MatchGoal matchGoal = matchGoal_service.getOne(id);
-            return new ResponseEntity<>(matchGoal, HttpStatus.FOUND);
+            return new ResponseEntity<>(matchGoal, HttpStatus.OK);
         }catch(DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -49,7 +49,7 @@ public class MatchGoalController {
     public ResponseEntity<MatchGoal> create(@RequestBody MatchGoal matchGoal){
         try{
             matchGoal_service.create(matchGoal);
-            return new ResponseEntity<>(matchGoal, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(matchGoal, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){

@@ -25,7 +25,7 @@ public class ResultController {
     public ResponseEntity<List<Result>> findAll() {
         try {
             List<Result> character_classes = result_service.findAll();
-            return new ResponseEntity<>(character_classes, HttpStatus.FOUND);
+            return new ResponseEntity<>(character_classes, HttpStatus.OK);
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -37,7 +37,7 @@ public class ResultController {
     public ResponseEntity<Result> getOne(@PathVariable int id){
         try{
             Result result = result_service.getOne(id);
-            return new ResponseEntity<>(result, HttpStatus.FOUND);
+            return new ResponseEntity<>(result, HttpStatus.OK);
         }catch(DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -49,7 +49,7 @@ public class ResultController {
     public ResponseEntity<Result> create(@RequestBody Result result){
         try{
             result_service.create(result);
-            return new ResponseEntity<>(result, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(result, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){

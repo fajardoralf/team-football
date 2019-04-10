@@ -25,7 +25,7 @@ public class CoachController {
     public ResponseEntity<List<Coach>> findAll() {
         try {
             List<Coach> associations = coach_service.findAll();
-            return new ResponseEntity<>(associations, HttpStatus.FOUND);
+            return new ResponseEntity<>(associations, HttpStatus.OK);
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -37,7 +37,7 @@ public class CoachController {
     public ResponseEntity<Coach> getOne(@PathVariable int id){
         try{
             Coach coach = coach_service.getOne(id);
-            return new ResponseEntity<>(coach, HttpStatus.FOUND);
+            return new ResponseEntity<>(coach, HttpStatus.OK);
         }catch(DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -49,7 +49,7 @@ public class CoachController {
     public ResponseEntity<Coach> create(@RequestBody Coach coach){
         try{
             coach_service.create(coach);
-            return new ResponseEntity<>(coach, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(coach, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
