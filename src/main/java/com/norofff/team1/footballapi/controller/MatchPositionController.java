@@ -7,11 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class MatchPositionController {
     private final MatchPosition_Service matchPosition_service;
@@ -49,6 +55,7 @@ public class MatchPositionController {
     }
 
     /*@PostMapping("/matchposition")
+
     public ResponseEntity<MatchPosition> create(@RequestBody MatchPosition matchPosition){
         try{
             matchPosition_service.create(matchPosition);
@@ -56,6 +63,7 @@ public class MatchPositionController {
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+
     }*/
 
     /*@PutMapping(value = "/matchposition/{id}")
@@ -72,4 +80,5 @@ public class MatchPositionController {
     public void delete(@PathVariable int id){
         matchPosition_service.delete(id);
     }*/
+
 }

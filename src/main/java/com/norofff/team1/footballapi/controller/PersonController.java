@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "https://team-football-react.herokuapp.com/")
+@CrossOrigin(origins = "*")
 @RestController
 public class PersonController {
     private final Person_Service person_service;

@@ -8,8 +8,10 @@ import java.util.List;
 public interface MatchPosition_Service {
     List<MatchPosition> findAll();
 
+
     MatchPosition getOne(MatchPositionId id);
     //MatchPosition create(MatchPosition matchPosition);
    // MatchPosition update(MatchPositionId id, MatchPosition matchPosition);
     //void delete(int id);
+
 }
