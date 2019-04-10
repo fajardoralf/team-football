@@ -25,7 +25,7 @@ public class SeasonController {
     public ResponseEntity<List<Season>> findAll() {
         try {
             List<Season> character_classes = season_service.findAll();
-            return new ResponseEntity<>(character_classes, HttpStatus.FOUND);
+            return new ResponseEntity<>(character_classes, HttpStatus.OK);
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -37,7 +37,7 @@ public class SeasonController {
     public ResponseEntity<Season> getOne(@PathVariable int id){
         try{
             Season season = season_service.getOne(id);
-            return new ResponseEntity<>(season, HttpStatus.FOUND);
+            return new ResponseEntity<>(season, HttpStatus.OK);
         }catch(DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -49,7 +49,7 @@ public class SeasonController {
     public ResponseEntity<Season> create(@RequestBody Season season){
         try{
             season_service.create(season);
-            return new ResponseEntity<>(season, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(season, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){

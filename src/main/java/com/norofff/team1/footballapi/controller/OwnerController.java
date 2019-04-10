@@ -25,7 +25,7 @@ public class OwnerController {
     public ResponseEntity<List<Owner>> findAll() {
         try {
             List<Owner> character_classes = owner_service.findAll();
-            return new ResponseEntity<>(character_classes, HttpStatus.FOUND);
+            return new ResponseEntity<>(character_classes, HttpStatus.OK);
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -37,7 +37,7 @@ public class OwnerController {
     public ResponseEntity<Owner> getOne(@PathVariable int id){
         try{
             Owner owner = owner_service.getOne(id);
-            return new ResponseEntity<>(owner, HttpStatus.FOUND);
+            return new ResponseEntity<>(owner, HttpStatus.OK);
         }catch(DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -49,7 +49,7 @@ public class OwnerController {
     public ResponseEntity<Owner> create(@RequestBody Owner owner){
         try{
             owner_service.create(owner);
-            return new ResponseEntity<>(owner, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(owner, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){

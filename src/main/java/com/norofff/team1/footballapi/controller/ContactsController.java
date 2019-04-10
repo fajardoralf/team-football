@@ -25,7 +25,7 @@ public class ContactsController {
     public ResponseEntity<List<Contact>> findAll() {
         try {
             List<Contact> associations = contact_service.findAll();
-            return new ResponseEntity<>(associations, HttpStatus.FOUND);
+            return new ResponseEntity<>(associations, HttpStatus.OK);
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -37,7 +37,7 @@ public class ContactsController {
     public ResponseEntity<Contact> getOne(@PathVariable int id){
         try{
             Contact contact = contact_service.getOne(id);
-            return new ResponseEntity<>(contact, HttpStatus.FOUND);
+            return new ResponseEntity<>(contact, HttpStatus.OK);
         }catch(DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -49,7 +49,7 @@ public class ContactsController {
     public ResponseEntity<Contact> create(@RequestBody Contact contact){
         try{
             contact_service.create(contact);
-            return new ResponseEntity<>(contact, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(contact, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){

@@ -25,7 +25,7 @@ public class LocationController {
     public ResponseEntity<List<Location>> findAll() {
         try {
             List<Location> goalTypes = location_service.findAll();
-            return new ResponseEntity<>(goalTypes, HttpStatus.FOUND);
+            return new ResponseEntity<>(goalTypes, HttpStatus.OK);
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -37,7 +37,7 @@ public class LocationController {
     public ResponseEntity<Location> getOne(@PathVariable int id){
         try{
             Location location = location_service.getOne(id);
-            return new ResponseEntity<>(location, HttpStatus.FOUND);
+            return new ResponseEntity<>(location, HttpStatus.OK);
         }catch(DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -49,7 +49,7 @@ public class LocationController {
     public ResponseEntity<Location> create(@RequestBody Location location){
         try{
             location_service.create(location);
-            return new ResponseEntity<>(location, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(location, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){

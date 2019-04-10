@@ -25,7 +25,7 @@ public class TeamController {
     public ResponseEntity<List<Team>> findAll() {
         try {
             List<Team> character_classes = team_service.findAll();
-            return new ResponseEntity<>(character_classes, HttpStatus.FOUND);
+            return new ResponseEntity<>(character_classes, HttpStatus.OK);
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -37,7 +37,7 @@ public class TeamController {
     public ResponseEntity<Team> getOne(@PathVariable int id){
         try{
             Team team = team_service.getOne(id);
-            return new ResponseEntity<>(team, HttpStatus.FOUND);
+            return new ResponseEntity<>(team, HttpStatus.OK);
         }catch(DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -49,7 +49,7 @@ public class TeamController {
     public ResponseEntity<Team> create(@RequestBody Team team){
         try{
             team_service.create(team);
-            return new ResponseEntity<>(team, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(team, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){

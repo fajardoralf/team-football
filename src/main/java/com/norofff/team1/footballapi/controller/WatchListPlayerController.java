@@ -24,7 +24,7 @@ public class WatchListPlayerController {
     public ResponseEntity<List<WatchListPlayer>> findAll() {
         try {
             List<WatchListPlayer> watchListPlayer = watchListPlayer_service.findAll();
-            return new ResponseEntity<>(watchListPlayer, HttpStatus.FOUND);
+            return new ResponseEntity<>(watchListPlayer, HttpStatus.OK);
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -36,7 +36,7 @@ public class WatchListPlayerController {
     public ResponseEntity<WatchListPlayer> getOne(@PathVariable int id){
         try{
             WatchListPlayer watchListPlayer = watchListPlayer_service.getOne(id);
-            return new ResponseEntity<>(watchListPlayer, HttpStatus.FOUND);
+            return new ResponseEntity<>(watchListPlayer, HttpStatus.OK);
         }catch(DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -48,11 +48,16 @@ public class WatchListPlayerController {
     public ResponseEntity<WatchListPlayer> create(@RequestBody WatchListPlayer watchListPlayer){
         try{
             watchListPlayer_service.create(watchListPlayer);
-            return new ResponseEntity<>(watchListPlayer, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(watchListPlayer, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @DeleteMapping(value = "/watchlistplayer/{id}")
+    public void delete(@PathVariable int id){
+        watchListPlayer_service.delete(id);
     }
 }

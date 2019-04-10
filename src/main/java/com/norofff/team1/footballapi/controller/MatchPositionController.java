@@ -31,7 +31,7 @@ public class MatchPositionController {
     public ResponseEntity<List<MatchPosition>> findAll() {
         try {
             List<MatchPosition> matchPositions = matchPosition_service.findAll();
-            return new ResponseEntity<>(matchPositions, HttpStatus.FOUND);
+            return new ResponseEntity<>(matchPositions, HttpStatus.OK);
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -47,7 +47,7 @@ public class MatchPositionController {
         try{
             MatchPosition matchPosition = matchPosition_service.getOne(matchPosId);
             System.out.println("line 39" + matchPosition);
-            return new ResponseEntity<>(matchPosition, HttpStatus.FOUND);
+            return new ResponseEntity<>(matchPosition, HttpStatus.OK);
         }catch(DataAccessException e){
             System.out.println("--");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

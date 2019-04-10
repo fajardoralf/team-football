@@ -25,7 +25,7 @@ public class Address_Controller {
     public ResponseEntity<List<Address>> findAll() {
         try {
             List<Address> addresses = address_service.findAll();
-            return new ResponseEntity<>(addresses, HttpStatus.FOUND);
+            return new ResponseEntity<>(addresses, HttpStatus.OK);
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -38,7 +38,7 @@ public class Address_Controller {
     public ResponseEntity<Address> getOne(@PathVariable int id){
         try{
             Address address = address_service.getOne(id);
-            return new ResponseEntity<>(address, HttpStatus.FOUND);
+            return new ResponseEntity<>(address, HttpStatus.OK);
         }catch(DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -50,7 +50,7 @@ public class Address_Controller {
     public ResponseEntity<Address> create(@RequestBody Address address){
         try{
             address_service.create(address);
-            return new ResponseEntity<>(address, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(address, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){

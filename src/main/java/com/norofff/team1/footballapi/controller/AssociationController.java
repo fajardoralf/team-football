@@ -25,7 +25,7 @@ public class AssociationController {
     public ResponseEntity<List<Association>> findAll() {
         try {
             List<Association> associations = association_service.findAll();
-            return new ResponseEntity<>(associations, HttpStatus.FOUND);
+            return new ResponseEntity<>(associations, HttpStatus.OK);
         } catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -37,7 +37,7 @@ public class AssociationController {
     public ResponseEntity<Association> getOne(@PathVariable int id){
         try{
             Association association = association_service.getOne(id);
-            return new ResponseEntity<>(association, HttpStatus.FOUND);
+            return new ResponseEntity<>(association, HttpStatus.OK);
         }catch(DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
@@ -49,7 +49,7 @@ public class AssociationController {
     public ResponseEntity<Association> create(@RequestBody Association association){
         try{
             association_service.create(association);
-            return new ResponseEntity<>(association, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(association, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
