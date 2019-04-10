@@ -1,7 +1,7 @@
 package com.norofff.team1.footballapi.service.implementation;
 
 import com.norofff.team1.footballapi.model.MatchPosition;
-import com.norofff.team1.footballapi.repository.MatchPositionId;
+import com.norofff.team1.footballapi.model.MatchPositionId;
 import com.norofff.team1.footballapi.repository.MatchPosition_Repository;
 import com.norofff.team1.footballapi.service.MatchPosition_Service;
 import org.springframework.beans.factory.annotation.Autowired;

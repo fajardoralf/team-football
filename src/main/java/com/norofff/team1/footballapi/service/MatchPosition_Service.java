@@ -1,7 +1,7 @@
 package com.norofff.team1.footballapi.service;
 
 import com.norofff.team1.footballapi.model.MatchPosition;
-import com.norofff.team1.footballapi.repository.MatchPositionId;
+import com.norofff.team1.footballapi.model.MatchPositionId;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.norofff.team1.footballapi.controller;
 
 import com.norofff.team1.footballapi.model.MatchPosition;
-import com.norofff.team1.footballapi.repository.MatchPositionId;
+import com.norofff.team1.footballapi.model.MatchPositionId;
 import com.norofff.team1.footballapi.service.MatchPosition_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.web.bind.annotation.*;
 
-
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -37,13 +37,20 @@ public class MatchPositionController {
         }
     }
 
-    @GetMapping("matchposition/getone")
-    public ResponseEntity<MatchPosition> getOne(@PathVariable MatchPositionId id){
+    @GetMapping("/matchposition/{matchId}/{playerId}")
+    public ResponseEntity<MatchPosition> getOne(@PathVariable int matchId, @PathVariable int playerId){
+        MatchPositionId matchPosId = new MatchPositionId(playerId, matchId);
+        System.out.println("matchPosId= " + matchId + " " + playerId);
+
         try{
-            MatchPosition matchPosition = matchPosition_service.getOne(id);
+            MatchPosition matchPosition = matchPosition_service.getOne(matchPosId);
+            System.out.println("line 39" + matchPosition);
             return new ResponseEntity<>(matchPosition, HttpStatus.FOUND);
         }catch(DataAccessException e){
+            System.out.println("--");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
