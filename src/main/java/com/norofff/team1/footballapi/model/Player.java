@@ -29,6 +29,13 @@ public class Player {
         this.person_id = person_id;
         this.team_id = team_id;
     }
+    //Postmann Constructor
+    public Player(String normal_position, String number, int person_id, int team_id) {
+        this.normal_position = normal_position;
+        this.number = number;
+        this.person_id = person_id;
+        this.team_id = team_id;
+    }
     //Constructor without normal_position (Can be Null)
     public Player(int player_id, String number, int person_id, int team_id) {
         this.player_id = player_id;

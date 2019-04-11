@@ -21,4 +21,8 @@ public class Owner {
         this.owner_id = owner_id;
         this.person_id = person_id;
     }
+    //Postmann Constructor
+    public Owner(int person_id) {
+        this.person_id = person_id;
+    }
 }

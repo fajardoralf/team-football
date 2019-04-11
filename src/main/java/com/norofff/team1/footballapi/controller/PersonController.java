@@ -58,6 +58,20 @@ public class PersonController {
         }
     }
 
+    @PostMapping("/person/list")
+    public ResponseEntity<Person[]> create(@RequestBody Person[] persons){
+        try{
+            for (int i = 0; i < persons.length-1; i++) {
+                person_service.create(persons[i]);
+            }
+            return new ResponseEntity<>(persons, HttpStatus.CREATED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PutMapping(value = "/person/{id}")
     public ResponseEntity<Person> update(@PathVariable int id, @RequestBody Person person){
         try{

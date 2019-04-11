@@ -57,6 +57,20 @@ public class SeasonController {
         }
     }
 
+    @PostMapping("/season/list")
+    public ResponseEntity<Season[]> create(@RequestBody Season[] seasons){
+        try{
+            for (int i = 0; i <seasons.length-1 ; i++) {
+                season_service.create(seasons[i]);
+            }
+            return new ResponseEntity<>(seasons, HttpStatus.CREATED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PutMapping(value = "/season/{id}")
     public ResponseEntity<Season> update(@PathVariable int id, @RequestBody Season season){
         try{

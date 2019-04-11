@@ -57,6 +57,20 @@ public class MatchGoalController {
         }
     }
 
+    @PostMapping("/matchgoal/list")
+    public ResponseEntity<MatchGoal[]> create(@RequestBody MatchGoal[] matchGoals){
+        try{
+            for (int i = 0; i < matchGoals.length-1; i++) {
+                matchGoal_service.create(matchGoals[i]);
+            }
+            return new ResponseEntity<>(matchGoals, HttpStatus.CREATED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PutMapping(value = "/matchgoal/{id}")
     public ResponseEntity<MatchGoal> update(@PathVariable int id, @RequestBody MatchGoal matchGoal){
         try{

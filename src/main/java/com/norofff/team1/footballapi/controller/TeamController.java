@@ -44,12 +44,27 @@ public class TeamController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
+    
     @PostMapping("/team")
     public ResponseEntity<Team> create(@RequestBody Team team){
         try{
             team_service.create(team);
             return new ResponseEntity<>(team, HttpStatus.CREATED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    //To create in postman
+    @PostMapping("/team/list")
+    public ResponseEntity<Team[]> create(@RequestBody Team[] teams){
+        try{
+            for (int i=0; i<teams.length-1;i++) {
+                team_service.create(teams[i]);
+            }
+            return new ResponseEntity<Team[]>(teams, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){

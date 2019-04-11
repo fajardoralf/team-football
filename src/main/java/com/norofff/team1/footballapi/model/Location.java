@@ -25,6 +25,12 @@ public class Location {
         this.address_id = address_id;
         this.description = description;
     }
+    //Postmann Constructor
+    public Location(String name, String address_id, String description) {
+        this.name = name;
+        this.address_id = address_id;
+        this.description = description;
+    }
 
     //Without description --> can be Null
     public Location(int location_id, String name, String address_id) {

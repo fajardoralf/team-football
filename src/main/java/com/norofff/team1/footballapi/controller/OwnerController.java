@@ -45,11 +45,26 @@ public class OwnerController {
         }
     }
 
+
     @PostMapping("/owner")
     public ResponseEntity<Owner> create(@RequestBody Owner owner){
         try{
             owner_service.create(owner);
             return new ResponseEntity<>(owner, HttpStatus.CREATED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("/owner/list")
+    public ResponseEntity<Owner[]> create(@RequestBody Owner[] owners){
+        try{
+            for (int i = 0; i < owners.length-1; i++) {
+                owner_service.create(owners[i]);
+            }
+            return new ResponseEntity<>(owners, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){

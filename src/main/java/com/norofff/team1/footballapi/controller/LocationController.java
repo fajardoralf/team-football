@@ -57,6 +57,20 @@ public class LocationController {
         }
     }
 
+    @PostMapping("/location/list")
+    public ResponseEntity<Location[]> create(@RequestBody Location[] locations){
+        try{
+            for (int i = 0; i <locations.length-1 ; i++) {
+                location_service.create(locations[i]);
+            }
+            return new ResponseEntity<>(locations, HttpStatus.CREATED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PutMapping(value = "/location/{id}")
     public ResponseEntity<Location> update(@PathVariable int id, @RequestBody Location location){
         try{
