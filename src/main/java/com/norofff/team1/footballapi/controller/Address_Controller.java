@@ -48,12 +48,24 @@ public class Address_Controller {
     }
 
     @PostMapping("/address")
+    public ResponseEntity<Address> create(@RequestBody Address address){
+        try{
+            address_service.create(address);
+            return new ResponseEntity<>(address, HttpStatus.CREATED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("/address/list")
     public ResponseEntity<Address[]> create(@RequestBody Address[] addresses){
         try{
             for (int i = 0; i < addresses.length;i++) {
                 address_service.create(addresses[i]);
             }
-                return new ResponseEntity<Address[]>(addresses, HttpStatus.CREATED);
+            return new ResponseEntity<Address[]>(addresses, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
