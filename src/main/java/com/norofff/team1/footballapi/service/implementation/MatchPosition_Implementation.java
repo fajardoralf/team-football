@@ -27,7 +27,7 @@ public class MatchPosition_Implementation implements MatchPosition_Service {
 
 
     public MatchPosition update(int matchPosition_id, MatchPosition matchPosition){
-        matchPosition.setMatchPosition_Id(matchPosition_id);
+        matchPosition.setMatchPosition_id(matchPosition_id);
         return matchPosition_repository.save(matchPosition);
     }
 
