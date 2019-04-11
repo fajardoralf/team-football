@@ -62,7 +62,7 @@ public class MatchPositionController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @PostMapping("/address/list")
+    @PostMapping("/matchposition/list")
     public ResponseEntity<MatchPosition[]> create(@RequestBody MatchPosition[] matchPositions){
         try{
             for (int i = 0; i < matchPositions.length;i++) {
