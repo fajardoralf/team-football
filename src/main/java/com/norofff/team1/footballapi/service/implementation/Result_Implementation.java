@@ -28,7 +28,7 @@ public class Result_Implementation implements Result_Service {
     public Result create(Result result) {return result_repository.save(result);}
 
     public Result update(int id, Result result){
-        result.setMatch_id(id);
+        result.setResult_id(id);
         return result_repository.save(result);
     }
 

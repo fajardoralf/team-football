@@ -13,12 +13,13 @@ public class Result {
     private int score;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public int result_id;
     private int match_id;   //Primary Key
     private int team_id;
 
     public Result(){}
 
-    public Result(int score, int match_id, int team_id) {
+    public Result(int result_id, int score, int match_id, int team_id) {
         this.score = score;
         this.match_id = match_id;
         this.team_id = team_id;
