@@ -57,6 +57,20 @@ public class ResultController {
         }
     }
 
+    @PostMapping("/result/")
+    public ResponseEntity<Result[]> create(@RequestBody Result[] results){
+        try{
+            for (int i = 0; i < results.length-1; i++) {
+                result_service.create(results[i]);
+            }
+            return new ResponseEntity<>(results, HttpStatus.CREATED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PutMapping(value = "/result/{id}")
     public ResponseEntity<Result> update(@PathVariable int id, @RequestBody Result result){
         try{

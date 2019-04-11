@@ -24,6 +24,7 @@ public class Person{
     //Default Constructor
     public Person() {}
 
+    //Postmann Constructor
     public Person(int address_id, String first_name, String last_name, Date date_of_birth) {
         this.address_id = address_id;
         this.first_name = first_name;

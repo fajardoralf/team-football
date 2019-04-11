@@ -20,6 +20,14 @@ public class Result {
     public Result(){}
 
     public Result(int result_id, int score, int match_id, int team_id) {
+        this.result_id= result_id;
+        this.score = score;
+        this.match_id = match_id;
+        this.team_id = team_id;
+    }
+
+    //Postmann constructor
+    public Result(int score, int match_id, int team_id) {
         this.score = score;
         this.match_id = match_id;
         this.team_id = team_id;

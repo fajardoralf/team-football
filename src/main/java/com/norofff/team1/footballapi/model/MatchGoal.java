@@ -29,6 +29,15 @@ public class MatchGoal {
         this.match_id = match_id;
         this.player_id = player_id;
     }
+
+    //Postmann Constructor
+    public MatchGoal(int player_id, int goal_type_id, int match_id, String description) {
+        this.goal_type_id = goal_type_id;
+        this.match_id = match_id;
+        this.player_id = player_id;
+        this.description = description;
+    }
+
     //Without description --> can be Null
     public MatchGoal(int goal_id, int goal_type_id, int match_id, int player_id) {
         this.goal_id = goal_id;

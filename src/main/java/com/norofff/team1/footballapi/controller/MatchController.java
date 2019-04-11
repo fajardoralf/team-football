@@ -45,11 +45,26 @@ public class MatchController {
         }
     }
 
+
     @PostMapping("/match")
     public ResponseEntity<Match> create(@RequestBody Match match){
         try{
             match_service.create(match);
             return new ResponseEntity<>(match, HttpStatus.CREATED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("/match/list")
+    public ResponseEntity<Match[]> create(@RequestBody Match[] matches){
+        try{
+            for (int i = 0; i <matches.length-1 ; i++) {
+                match_service.create(matches[i]);
+            }
+            return new ResponseEntity<>(matches, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){

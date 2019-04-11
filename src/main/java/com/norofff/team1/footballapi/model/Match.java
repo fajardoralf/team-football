@@ -30,4 +30,12 @@ public class Match {
         this.home_team_id = home_team_id;
         this.away_team_id = away_team_id;
     }
+    //Postmann constructor
+    public Match(Date match_date, int home_team_id, int away_team_id,  int season_id, int location_id) {
+        this.match_date = match_date;
+        this.home_team_id = home_team_id;
+        this.away_team_id = away_team_id;
+        this.season_id = season_id;
+        this.location_id = location_id;
+    }
 }

@@ -45,11 +45,26 @@ public class PlayerController {
         }
     }
 
+
     @PostMapping("/player")
     public ResponseEntity<Player> create(@RequestBody Player player){
         try{
             player_service.create(player);
             return new ResponseEntity<>(player, HttpStatus.CREATED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("/player/list")
+    public ResponseEntity<Player[]> create(@RequestBody Player[] players){
+        try{
+            for (int i = 0; i < players.length-1 ; i++) {
+                player_service.create(players[i]);
+            }
+            return new ResponseEntity<>(players, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
