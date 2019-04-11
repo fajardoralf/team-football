@@ -57,6 +57,20 @@ public class GoalTypeController {
         }
     }
 
+    @PostMapping("/goaltype/list")
+    public ResponseEntity<GoalType[]> create(@RequestBody GoalType[] goalTypes){
+        try{
+            for (int i = 0; i < goalTypes.length;i++) {
+                goalType_service.create(goalTypes[i]);
+            }
+            return new ResponseEntity<GoalType[]>(goalTypes, HttpStatus.CREATED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PutMapping(value = "/goaltype/{id}")
     public ResponseEntity<GoalType> update(@PathVariable int id, @RequestBody GoalType contact){
         try{

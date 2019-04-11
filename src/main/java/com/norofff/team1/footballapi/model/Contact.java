@@ -25,4 +25,11 @@ public class Contact {
         this.contact_detail = contact_detail;
         this.person_id = person_id;
     }
+
+    //postman constructor
+    public Contact(String contact_type, String contact_detail, int person_id) {
+        this.contact_type = contact_type;
+        this.contact_detail = contact_detail;
+        this.person_id = person_id;
+    }
 }
