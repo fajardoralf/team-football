@@ -56,8 +56,7 @@ public class MatchPositionController {
         }
     }
 
-    /*@PostMapping("/matchposition")
-
+    @PostMapping("/matchposition")
     public ResponseEntity<MatchPosition> create(@RequestBody MatchPosition matchPosition){
         try{
             matchPosition_service.create(matchPosition);
@@ -66,7 +65,7 @@ public class MatchPositionController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-    }*/
+    }
 
     /*@PutMapping(value = "/matchposition/{id}")
     public ResponseEntity<MatchPosition> update(@PathVariable int id, @RequestBody MatchPosition matchPosition){
