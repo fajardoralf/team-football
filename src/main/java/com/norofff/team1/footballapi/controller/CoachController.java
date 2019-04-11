@@ -56,6 +56,19 @@ public class CoachController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @PostMapping("/coach/list")
+    public ResponseEntity<Coach[]> create(@RequestBody Coach[] coaches){
+        try{
+            for (int i = 0; i < coaches.length;i++) {
+                coach_service.create(coaches[i]);
+            }
+            return new ResponseEntity<Coach[]>(coaches, HttpStatus.CREATED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
     @PutMapping(value = "/coach/{id}")
     public ResponseEntity<Coach> update(@PathVariable int id, @RequestBody Coach coach){

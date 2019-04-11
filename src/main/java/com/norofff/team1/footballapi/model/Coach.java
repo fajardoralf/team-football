@@ -21,4 +21,8 @@ public class Coach {
         this.coach_id = coach_id;
         this.person_id = person_id;
     }
+    //Postman contructor
+    public Coach(int person_id) {
+        this.person_id = person_id;
+    }
 }
