@@ -1,7 +1,6 @@
 package com.norofff.team1.footballapi.service.implementation;
 
 import com.norofff.team1.footballapi.model.MatchPosition;
-import com.norofff.team1.footballapi.model.MatchPositionId;
 import com.norofff.team1.footballapi.repository.MatchPosition_Repository;
 import com.norofff.team1.footballapi.service.MatchPosition_Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,21 +21,21 @@ public class MatchPosition_Implementation implements MatchPosition_Service {
         return matchPosition_repository.findAll();
     }
 
-    public MatchPosition getOne(MatchPositionId id) {return matchPosition_repository.getOne(id);}
+    public MatchPosition getOne(int id) {return matchPosition_repository.getOne(id);}
 
-    //public MatchPosition create(MatchPosition matchGoal) {return matchPosition_repository.save(matchGoal);}
+    public MatchPosition create(MatchPosition matchGoal) {return matchPosition_repository.save(matchGoal);}
 
 
-    /*public MatchPosition update(MatchPositionId id, MatchPosition matchPosition){
-        matchPosition.setId(id);
+    public MatchPosition update(int matchPosition_id, MatchPosition matchPosition){
+        matchPosition.setMatchPosition_Id(matchPosition_id);
         return matchPosition_repository.save(matchPosition);
-    }*/
+    }
 
-    /*public void delete(int id){
+    public void delete(int id){
         try{
             matchPosition_repository.deleteById(id);
         }catch (IllegalAccessError e){
             throw new IllegalAccessError();
         }
-    }*/
+    }
 }
