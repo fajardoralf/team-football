@@ -16,4 +16,6 @@ public interface Player_Service {
     void delete(int id);
 
     List<Object> findAllPlayersWithName();
+
+    List<Object> findAllPlayersWithNameAndTeam();
 }
