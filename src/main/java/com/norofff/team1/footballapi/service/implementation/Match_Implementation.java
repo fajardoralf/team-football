@@ -36,4 +36,6 @@ public class Match_Implementation implements Match_Service {
             throw new IllegalAccessError();
         }
     }
+
+    public List<Object> findAllMatchesLimited() {return match_repository.findAllMatchesLimited();}
 }
