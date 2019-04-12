@@ -14,4 +14,6 @@ public interface Player_Service {
     Player create(Player player);
     Player update(int id, Player player);
     void delete(int id);
+
+    List<Object> findAllPlayersWithName();
 }

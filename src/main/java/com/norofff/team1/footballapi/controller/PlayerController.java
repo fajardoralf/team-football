@@ -32,6 +32,17 @@ public class PlayerController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @GetMapping("/playername")
+    public ResponseEntity<List<Object>> findAllPlayersWithName() {
+        try {
+            List<Object> character_classes = player_service.findAllPlayersWithName();
+            return new ResponseEntity<>(character_classes, HttpStatus.OK);
+        } catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
     @GetMapping("player/{id}")
     public ResponseEntity<Player> getOne(@PathVariable int id){
