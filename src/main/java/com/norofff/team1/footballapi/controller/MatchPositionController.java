@@ -44,7 +44,6 @@ public class MatchPositionController {
             MatchPosition matchPosition = matchPosition_service.getOne(matchPosition_id);
             return new ResponseEntity<>(matchPosition, HttpStatus.OK);
         }catch(DataAccessException e){
-            System.out.println("--");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch(EntityNotFoundException e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
