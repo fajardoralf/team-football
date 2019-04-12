@@ -55,6 +55,19 @@ public class PlayerController {
         }
     }
 
+    //Only see players name and team name
+    @GetMapping("/playerlimited")
+    public ResponseEntity<List<Object>> findAllPlayersLimited() {
+        try {
+            List<Object> character_classes = player_service.findAllPlayersLimited();
+            return new ResponseEntity<>(character_classes, HttpStatus.OK);
+        } catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @GetMapping("player/{id}")
     public ResponseEntity<Player> getOne(@PathVariable int id){
         try{
