@@ -62,7 +62,7 @@ public class Address_Controller {
     @PostMapping("/address/list")
     public ResponseEntity<Address[]> create(@RequestBody Address[] addresses){
         try{
-            for (int i = 0; i < addresses.length;i++) {
+            for (int i = 0; i < addresses.length; i++) {
                 address_service.create(addresses[i]);
             }
             return new ResponseEntity<Address[]>(addresses, HttpStatus.CREATED);

@@ -60,7 +60,7 @@ public class LocationController {
     @PostMapping("/location/list")
     public ResponseEntity<Location[]> create(@RequestBody Location[] locations){
         try{
-            for (int i = 0; i <locations.length-1 ; i++) {
+            for (int i = 0; i <locations.length; i++) {
                 location_service.create(locations[i]);
             }
             return new ResponseEntity<>(locations, HttpStatus.CREATED);

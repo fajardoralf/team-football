@@ -61,7 +61,7 @@ public class TeamController {
     @PostMapping("/team/list")
     public ResponseEntity<Team[]> create(@RequestBody Team[] teams){
         try{
-            for (int i=0; i<teams.length-1;i++) {
+            for (int i=0; i<teams.length;i++) {
                 team_service.create(teams[i]);
             }
             return new ResponseEntity<Team[]>(teams, HttpStatus.CREATED);

@@ -57,10 +57,10 @@ public class ResultController {
         }
     }
 
-    @PostMapping("/result/")
+    @PostMapping("/result/list")
     public ResponseEntity<Result[]> create(@RequestBody Result[] results){
         try{
-            for (int i = 0; i < results.length-1; i++) {
+            for (int i = 0; i < results.length; i++) {
                 result_service.create(results[i]);
             }
             return new ResponseEntity<>(results, HttpStatus.CREATED);
