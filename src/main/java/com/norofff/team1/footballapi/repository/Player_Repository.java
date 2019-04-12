@@ -25,4 +25,11 @@ public interface Player_Repository extends JpaRepository<Player, Integer> {
             "NATURAL JOIN team;", nativeQuery = true)
     List<Object> findAllPlayersWithNameAndTeam();
 
+    @Query(value = "SELECT person.first_name, person.last_name, team.team_name\n" +
+            "FROM person \n" +
+            "NATURAL JOIN player\n" +
+            "NATURAL JOIN team;", nativeQuery = true)
+    List<Object> findAllPlayersLimited();
     }
+
+

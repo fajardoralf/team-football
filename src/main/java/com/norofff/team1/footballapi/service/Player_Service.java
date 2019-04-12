@@ -18,4 +18,6 @@ public interface Player_Service {
     List<Object> findAllPlayersWithName();
 
     List<Object> findAllPlayersWithNameAndTeam();
+
+    List<Object> findAllPlayersLimited();
 }
