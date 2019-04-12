@@ -42,4 +42,6 @@ public class Player_Implementation implements Player_Service {
     }
 
     public List<Object> findAllPlayersWithName(){return player_repository.findAllPlayersWithName();}
+
+    public List<Object> findAllPlayersWithNameAndTeam(){return player_repository.findAllPlayersWithNameAndTeam();}
 }
