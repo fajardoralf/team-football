@@ -60,7 +60,7 @@ public class SeasonController {
     @PostMapping("/season/list")
     public ResponseEntity<Season[]> create(@RequestBody Season[] seasons){
         try{
-            for (int i = 0; i <seasons.length-1 ; i++) {
+            for (int i = 0; i <seasons.length; i++) {
                 season_service.create(seasons[i]);
             }
             return new ResponseEntity<>(seasons, HttpStatus.CREATED);

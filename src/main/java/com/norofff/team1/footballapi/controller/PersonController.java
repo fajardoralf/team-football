@@ -61,7 +61,7 @@ public class PersonController {
     @PostMapping("/person/list")
     public ResponseEntity<Person[]> create(@RequestBody Person[] persons){
         try{
-            for (int i = 0; i < persons.length-1; i++) {
+            for (int i = 0; i < persons.length; i++) {
                 person_service.create(persons[i]);
             }
             return new ResponseEntity<>(persons, HttpStatus.CREATED);

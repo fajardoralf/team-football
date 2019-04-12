@@ -61,7 +61,7 @@ public class OwnerController {
     @PostMapping("/owner/list")
     public ResponseEntity<Owner[]> create(@RequestBody Owner[] owners){
         try{
-            for (int i = 0; i < owners.length-1; i++) {
+            for (int i = 0; i < owners.length; i++) {
                 owner_service.create(owners[i]);
             }
             return new ResponseEntity<>(owners, HttpStatus.CREATED);
