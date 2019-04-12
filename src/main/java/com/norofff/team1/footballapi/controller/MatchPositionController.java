@@ -1,7 +1,6 @@
 package com.norofff.team1.footballapi.controller;
 
 import com.norofff.team1.footballapi.model.MatchPosition;
-import com.norofff.team1.footballapi.model.MatchPositionId;
 import com.norofff.team1.footballapi.service.MatchPosition_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -39,14 +38,10 @@ public class MatchPositionController {
         }
     }
 
-    @GetMapping("/matchposition/{matchId}/{playerId}")
-    public ResponseEntity<MatchPosition> getOne(@PathVariable int matchId, @PathVariable int playerId){
-        MatchPositionId matchPosId = new MatchPositionId(playerId, matchId);
-        System.out.println("matchPosId= " + matchId + " " + playerId);
-
+    @GetMapping("/matchposition/{matchPosition_id]")
+    public ResponseEntity<MatchPosition> getOne(@PathVariable int matchPosition_id){
         try{
-            MatchPosition matchPosition = matchPosition_service.getOne(matchPosId);
-            System.out.println("line 39" + matchPosition);
+            MatchPosition matchPosition = matchPosition_service.getOne(matchPosition_id);
             return new ResponseEntity<>(matchPosition, HttpStatus.OK);
         }catch(DataAccessException e){
             System.out.println("--");
@@ -56,19 +51,32 @@ public class MatchPositionController {
         }
     }
 
-    /*@PostMapping("/matchposition")
-
+    @PostMapping("/matchposition")
     public ResponseEntity<MatchPosition> create(@RequestBody MatchPosition matchPosition){
         try{
             matchPosition_service.create(matchPosition);
             return new ResponseEntity<>(matchPosition, HttpStatus.ACCEPTED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+    @PostMapping("/matchposition/list")
+    public ResponseEntity<MatchPosition[]> create(@RequestBody MatchPosition[] matchPositions){
+        try{
+            for (int i = 0; i < matchPositions.length;i++) {
+                matchPosition_service.create(matchPositions[i]);
+            }
+            return new ResponseEntity<MatchPosition[]>(matchPositions, HttpStatus.CREATED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
-    }*/
-
-    /*@PutMapping(value = "/matchposition/{id}")
+    @PutMapping(value = "/matchposition/{id}")
     public ResponseEntity<MatchPosition> update(@PathVariable int id, @RequestBody MatchPosition matchPosition){
         try{
             matchPosition_service.update(id, matchPosition);
@@ -76,11 +84,11 @@ public class MatchPositionController {
         }catch (DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-    }*/
+    }
 
-    /*@DeleteMapping(value = "/matchposition/{id}")
+    @DeleteMapping(value = "/matchposition/{id}")
     public void delete(@PathVariable int id){
         matchPosition_service.delete(id);
-    }*/
+    }
 
 }

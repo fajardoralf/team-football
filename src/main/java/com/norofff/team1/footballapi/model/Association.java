@@ -18,8 +18,7 @@ public class Association {
 
     public Association(){}
 
-    public Association(int association_id, String name, String description) {
-        this.association_id = association_id;
+    public Association(String name, String description) {
         this.name = name;
         this.description = description;
     }

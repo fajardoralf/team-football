@@ -57,6 +57,20 @@ public class ContactsController {
         }
     }
 
+    @PostMapping("/contact/list")
+    public ResponseEntity<Contact[]> create(@RequestBody Contact[] contacts){
+        try{
+            for (int i = 0; i < contacts.length;i++) {
+                contact_service.create(contacts[i]);
+            }
+            return new ResponseEntity<Contact[]>(contacts, HttpStatus.CREATED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PutMapping(value = "/contact/{id}")
     public ResponseEntity<Contact> update(@PathVariable int id, @RequestBody Contact contact){
         try{

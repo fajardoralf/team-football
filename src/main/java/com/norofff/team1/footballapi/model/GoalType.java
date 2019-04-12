@@ -21,4 +21,9 @@ public class GoalType {
         this.goal_type_id = goal_type_id;
         this.type = type;
     }
+
+    //postman constructor
+    public GoalType(String type) {
+        this.type = type;
+    }
 }

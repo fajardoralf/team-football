@@ -56,6 +56,19 @@ public class AssociationController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @PostMapping("/association/list")
+    public ResponseEntity<Association[]> create(@RequestBody Association[] associations){
+        try{
+            for (int i = 0; i < associations.length;i++) {
+                association_service.create(associations[i]);
+            }
+            return new ResponseEntity<Association[]>(associations, HttpStatus.CREATED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
     @PutMapping(value = "/association/{id}")
     public ResponseEntity<Association> update(@PathVariable int id, @RequestBody Association association){
