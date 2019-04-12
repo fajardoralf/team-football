@@ -40,4 +40,6 @@ public class Player_Implementation implements Player_Service {
             throw new IllegalAccessError();
         }
     }
+
+    public List<Object> findAllPlayersWithName(){return player_repository.findAllPlayersWithName();}
 }
