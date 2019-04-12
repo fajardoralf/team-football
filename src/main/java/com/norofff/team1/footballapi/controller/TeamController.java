@@ -44,7 +44,7 @@ public class TeamController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    
+
     @PostMapping("/team")
     public ResponseEntity<Team> create(@RequestBody Team team){
         try{
