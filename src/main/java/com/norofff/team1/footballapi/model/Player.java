@@ -3,6 +3,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -16,6 +17,11 @@ public class Player {
     private String number;
     private int person_id;
     private int team_id;
+
+
+    @OneToMany
+    @JoinColumn(name = "person_id")
+    private List<Person> person;
 
     public Player() {
     }
@@ -57,4 +63,5 @@ public class Player {
         this.person_id = person_id;
         this.team_id = team_id;
     }
+
 }
