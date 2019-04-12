@@ -15,6 +15,7 @@ public class MatchPosition implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "matchposition_id")
     private int matchPosition_id;
     private int player_id;
     private int match_id;
