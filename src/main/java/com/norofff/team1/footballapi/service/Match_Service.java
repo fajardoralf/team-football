@@ -11,4 +11,6 @@ public interface Match_Service {
     Match create(Match match);
     Match update(int id, Match match);
     void delete(int id);
+
+    List<Object> findAllMatchesLimited();
 }

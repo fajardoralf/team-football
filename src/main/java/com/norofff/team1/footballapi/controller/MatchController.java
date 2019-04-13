@@ -32,6 +32,18 @@ public class MatchController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    //To get all matches result: team_name, result,score (= number of goals )
+    @GetMapping("/matchlimited")
+    public ResponseEntity<List<Object>> findAllMatchesLimited() {
+        try {
+            List<Object> matches = match_service.findAllMatchesLimited();
+            return new ResponseEntity<>(matches, HttpStatus.OK);
+        } catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
     @GetMapping("/match/{id}")
     public ResponseEntity<Match> getOne(@PathVariable int id){
