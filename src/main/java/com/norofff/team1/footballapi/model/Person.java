@@ -14,6 +14,7 @@ import java.sql.Date;
 public class Person{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "person_id", unique = true, nullable = false)
     private int person_id;  //Primary key
     private int address_id; //Foreign key (can be Null) NEED BUG FIX, FOREGIN KEY CAN NOT!! BE NULL
     private String first_name;

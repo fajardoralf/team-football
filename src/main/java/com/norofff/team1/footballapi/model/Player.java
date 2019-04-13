@@ -19,9 +19,13 @@ public class Player {
     private int team_id;
 
 
-    @OneToMany
-    @JoinColumn(name = "person_id")
-    private List<Person> person;
+    @OneToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST}, fetch = FetchType.LAZY, targetEntity = Person.class)
+    @JoinColumn(name = "person_id", updatable = false, insertable = false)
+    private Person person;
+
+    @ManyToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST},fetch = FetchType.LAZY, targetEntity = Team.class)
+    @JoinColumn(name = "team_id", updatable = false, insertable = false)
+    private Team team;
 
     public Player() {
     }
