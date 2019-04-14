@@ -15,6 +15,10 @@ public class Owner {
     private int owner_id;
     private int person_id;
 
+    @OneToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST}, fetch = FetchType.LAZY, targetEntity = Person.class)
+    @JoinColumn(name = "person_id", updatable = false, insertable = false)
+    private Person person;
+
     public Owner(){}
 
     public Owner(int owner_id, int person_id) {

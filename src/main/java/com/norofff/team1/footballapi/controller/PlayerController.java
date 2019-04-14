@@ -68,6 +68,18 @@ public class PlayerController {
         }
     }
 
+    @GetMapping("playerteam/{id}")
+    public ResponseEntity<List<Player>> findPlayerTeam(@PathVariable int id){
+        try{
+            List<Player> playerTeam = player_service.findPlayerTeam(id);
+            return new ResponseEntity<>(playerTeam, HttpStatus.OK);
+        }catch(DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @GetMapping("player/{id}")
     public ResponseEntity<Player> getOne(@PathVariable int id){
         try{

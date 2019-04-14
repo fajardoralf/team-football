@@ -15,6 +15,10 @@ public class Coach {
     private int coach_id;   //Primary Key
     private int person_id;  //Foregin key
 
+    @OneToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST}, fetch = FetchType.LAZY, targetEntity = Person.class)
+    @JoinColumn(name = "person_id", updatable = false, insertable = false)
+    private Person person;
+
     public Coach(){}
 
     public Coach(int coach_id, int person_id) {

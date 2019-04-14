@@ -87,6 +87,5 @@ public class OwnerController {
     @DeleteMapping(value = "/owner/{id}")
     public void delete(@PathVariable int id){
         owner_service.delete(id);
-
     }
 }

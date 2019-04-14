@@ -13,6 +13,10 @@ public interface Player_Repository extends JpaRepository<Player, Integer> {
     Player save(Player player);
     void deleteById(int id);
 
+
+    @Query(value = "SELECT * FROM player WHERE player.team_id = ?1", nativeQuery = true)
+    List<Player> findPlayerTeam(int id);
+
     @Query(value = "SELECT player_id, person_id, team_id,first_name, \n" +
             "last_name,normal_position, number\n" +
             "FROM player NATURAL JOIN Person;", nativeQuery = true)
