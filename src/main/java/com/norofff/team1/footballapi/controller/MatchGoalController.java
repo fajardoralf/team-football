@@ -45,6 +45,18 @@ public class MatchGoalController {
         }
     }
 
+    @GetMapping("matchidgoal/{id}")
+    public ResponseEntity<List<MatchGoal>> findMatchIdGoal(@PathVariable int id){
+        try{
+            List<MatchGoal> playerTeam = matchGoal_service.findMatchIdGoal(id);
+            return new ResponseEntity<>(playerTeam, HttpStatus.OK);
+        }catch(DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping("/matchgoal")
     public ResponseEntity<MatchGoal> create(@RequestBody MatchGoal matchGoal){
         try{

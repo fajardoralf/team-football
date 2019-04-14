@@ -36,4 +36,6 @@ public class MatchGoal_Implementation implements MatchGoal_Service {
             throw new IllegalAccessError();
         }
     }
+
+    public List<MatchGoal> findMatchIdGoal(int id){return matchGoal_repository.findMatchIdGoal(id);}
 }

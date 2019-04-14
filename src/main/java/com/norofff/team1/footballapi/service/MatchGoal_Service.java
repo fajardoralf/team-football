@@ -11,4 +11,6 @@ public interface MatchGoal_Service {
     MatchGoal create(MatchGoal matchGoal);
     MatchGoal update(int id, MatchGoal matchGoal);
     void delete(int id);
+
+    List<MatchGoal> findMatchIdGoal(int id);
 }

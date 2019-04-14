@@ -1,5 +1,6 @@
 package com.norofff.team1.footballapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "contact")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,6 +16,10 @@ public class Contact {
     private String contact_type;
     private String contact_detail;
     private int person_id;          //Foregin Key
+
+    @OneToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST}, fetch = FetchType.LAZY, targetEntity = Person.class)
+    @JoinColumn(name = "person_id", updatable = false, insertable = false)
+    private Person person;
 
     public Contact() {
 

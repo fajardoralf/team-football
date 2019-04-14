@@ -1,5 +1,6 @@
 package com.norofff.team1.footballapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
@@ -19,6 +20,9 @@ public class MatchGoal {
     private int match_id;       //Foreign key
     private int player_id;      //Foreign key
 
+    @OneToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST}, fetch = FetchType.LAZY, targetEntity = Player.class)
+    @JoinColumn(name = "player_id", updatable = false, insertable = false)
+    private Player player;
 
     public MatchGoal () {}
 

@@ -20,6 +20,18 @@ public class Match {
     private int home_team_id;   //Foreign key
     private int away_team_id;   //Foreign key
 
+    @OneToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST}, fetch = FetchType.LAZY, targetEntity = Team.class)
+    @JoinColumn(name = "home_team_id", updatable = false, insertable = false)
+    private Team home_team;
+
+    @OneToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST}, fetch = FetchType.LAZY, targetEntity = Team.class)
+    @JoinColumn(name = "away_team_id", updatable = false, insertable = false)
+    private Team away_team;
+
+    @OneToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST}, fetch = FetchType.LAZY, targetEntity = MatchGoal.class)
+    @JoinColumn(name = "match_id", updatable = false, insertable = false)
+    private MatchGoal goals;
+
     public Match(){}
 
     public Match(int match_id, Date match_date, int season_id, int location_id, int home_team_id, int away_team_id) {

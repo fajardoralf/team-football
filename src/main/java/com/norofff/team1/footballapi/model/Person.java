@@ -5,8 +5,6 @@ import lombok.Data;
 import javax.persistence.*;
 import java.sql.Date;
 
-
-
 @Data
 @Entity
 @Table(name = "person")
@@ -21,6 +19,9 @@ public class Person{
     private String last_name;
     private Date date_of_birth;
 
+    @OneToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST}, fetch = FetchType.LAZY, targetEntity = Address.class)
+    @JoinColumn(name = "address_id", updatable = false, insertable = false)
+    private Address address;
 
     //Default Constructor
     public Person() {}
