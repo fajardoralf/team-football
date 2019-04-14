@@ -24,6 +24,10 @@ public class MatchGoal {
     @JoinColumn(name = "player_id", updatable = false, insertable = false)
     private Player player;
 
+    @OneToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST}, fetch = FetchType.LAZY, targetEntity = Match.class)
+    @JoinColumn(name = "match_id", updatable = false, insertable = false)
+    private Match match;
+
     public MatchGoal () {}
 
     public MatchGoal(int goal_id, String description, int goal_type_id, int match_id, int player_id) {
