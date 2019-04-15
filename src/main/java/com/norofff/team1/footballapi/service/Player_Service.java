@@ -22,4 +22,6 @@ public interface Player_Service {
     List<Object> findAllPlayersLimited();
 
     List<Player> findPlayerTeam(int id);
+
+    List<Object> findAllPlayersWithNameByTeamId(int id);
 }

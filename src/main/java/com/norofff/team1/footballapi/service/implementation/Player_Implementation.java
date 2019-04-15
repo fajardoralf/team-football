@@ -48,4 +48,6 @@ public class Player_Implementation implements Player_Service {
     public List<Object> findAllPlayersLimited(){return player_repository.findAllPlayersLimited();}
 
     public List<Player> findPlayerTeam(int id) {return player_repository.findPlayerTeam(id);}
+
+    public List<Object> findAllPlayersWithNameByTeamId(int id) {return player_repository.findAllPlayersWithNameByTeamId(id)};
 }

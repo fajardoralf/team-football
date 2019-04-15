@@ -68,6 +68,20 @@ public class PlayerController {
         }
     }
 
+    //Returns all players on a team by team id with first and last name, normal position and number
+    @GetMapping("/playerbyteam/{id}")
+    public ResponseEntity<List<Object>> findAllPlayersWithNameByTeamId(@PathVariable int id){
+        try{
+            List<Object> playerTeam = player_service.findAllPlayersWithNameByTeamId(id);
+            return new ResponseEntity<>(playerTeam, HttpStatus.OK);
+        }catch(DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+
     @GetMapping("playerteam/{id}")
     public ResponseEntity<List<Player>> findPlayerTeam(@PathVariable int id){
         try{
