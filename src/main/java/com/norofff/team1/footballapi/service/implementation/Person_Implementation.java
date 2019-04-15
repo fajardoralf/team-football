@@ -37,4 +37,5 @@ public class Person_Implementation implements Person_Service {
             throw new IllegalAccessError();
         }
     }
+    public Object getTeamByPersonId(int id){return person_repository.getTeamByPersonId(id);}
 }

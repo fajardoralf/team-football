@@ -12,4 +12,6 @@ public interface Person_Service {
     Person create(Person person);
     Person update(int id, Person person);
     void delete(int id);
+
+    Object getTeamByPersonId(int id);
 }

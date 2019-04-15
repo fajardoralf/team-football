@@ -46,6 +46,18 @@ public class PersonController {
         }
     }
 
+    @GetMapping("personname/{id}")
+    public ResponseEntity<Object> getTeamByPersonId(@PathVariable int id){
+        try{
+            Object person = person_service.getTeamByPersonId(id);
+            return new ResponseEntity<>(person, HttpStatus.OK);
+        } catch (DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping("/person")
     public ResponseEntity<Person> create(@RequestBody Person person){
         try{
