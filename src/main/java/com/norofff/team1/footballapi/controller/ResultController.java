@@ -87,4 +87,17 @@ public class ResultController {
     public void delete(@PathVariable int id){
         result_service.delete(id);
     }
+
+    
+    @GetMapping(value = "/resultmatch/{id}")
+    public ResponseEntity<Result> matchIdResult(@PathVariable int id){
+        try{
+            Result result = result_service.matchIdResult(id);
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        }catch (DataAccessException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

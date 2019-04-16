@@ -40,4 +40,8 @@ public class Result_Implementation implements Result_Service {
             throw new IllegalAccessError();
         }
     }
+
+    public Result matchIdResult(int id){
+        return result_repository.matchIdResult(id);
+    }
 }

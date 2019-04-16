@@ -12,4 +12,6 @@ public interface Result_Service {
     Result create(Result result);
     Result update(int id, Result team);
     void delete(int id);
+
+    Result matchIdResult(int id);
 }
