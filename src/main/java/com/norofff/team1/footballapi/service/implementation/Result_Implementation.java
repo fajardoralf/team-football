@@ -41,7 +41,7 @@ public class Result_Implementation implements Result_Service {
         }
     }
 
-    public Result matchIdResult(int id){
+    public List<Result> matchIdResult(int id){
         return result_repository.matchIdResult(id);
     }
 }

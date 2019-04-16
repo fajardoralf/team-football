@@ -88,11 +88,11 @@ public class ResultController {
         result_service.delete(id);
     }
 
-    
+
     @GetMapping(value = "/resultmatch/{id}")
-    public ResponseEntity<Result> matchIdResult(@PathVariable int id){
+    public ResponseEntity<List<Result>> matchIdResult(@PathVariable int id){
         try{
-            Result result = result_service.matchIdResult(id);
+            List<Result> result = result_service.matchIdResult(id);
             return new ResponseEntity<>(result, HttpStatus.OK);
         }catch (DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

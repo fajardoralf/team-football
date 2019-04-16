@@ -14,5 +14,5 @@ public interface Result_Repository extends JpaRepository<Result, Integer> {
         void deleteById(int id);
 
         @Query(value = "SELECT * FROM result WHERE result.match_id = ?1", nativeQuery = true)
-        Result matchIdResult(int id);
+        List<Result> matchIdResult(int id);
 }

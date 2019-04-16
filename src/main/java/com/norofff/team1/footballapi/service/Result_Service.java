@@ -13,5 +13,5 @@ public interface Result_Service {
     Result update(int id, Result team);
     void delete(int id);
 
-    Result matchIdResult(int id);
+    List<Result> matchIdResult(int id);
 }
