@@ -72,7 +72,7 @@ public class MatchGoalController {
     @PostMapping("/matchgoal/list")
     public ResponseEntity<MatchGoal[]> create(@RequestBody MatchGoal[] matchGoals){
         try{
-            for (int i = 0; i < matchGoals.length-1; i++) {
+            for (int i = 0; i < matchGoals.length; i++) {
                 matchGoal_service.create(matchGoals[i]);
             }
             return new ResponseEntity<>(matchGoals, HttpStatus.CREATED);
