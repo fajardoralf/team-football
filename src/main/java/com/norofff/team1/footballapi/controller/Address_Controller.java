@@ -90,43 +90,4 @@ public class Address_Controller {
         address_service.delete(id);
     }
 
-    /*public void creaeAdress(){
-        String adresses[][] =
-                        {{"5300 Sed Street", "38220", "Huntsville", "United Kingdom"},
-                        {"5301 Sed Street", "38220", "Huntsville", "United Kingdom"},
-                        {"5302 Sed Street", "38220", "Huntsville", "United Kingdom"},
-                        {"5303 Sed Street", "38220", "Huntsville", "United Kingdom"},
-                        {"5304 Sed Street", "38220", "Huntsville", "United Kingdom"},
-                        {"5305 Sed Street", "38220", "Huntsville", "United Kingdom"},
-                        {"5306 Sed Street", "38220", "Huntsville", "United Kingdom"},
-                        {"5307 Sed Street", "38220", "Huntsville", "United Kingdom"},
-                        {"5308 Sed Street", "38220", "Huntsville", "United Kingdom"},
-                        {"5309 Sed Street", "38220", "Huntsville", "United Kingdom"},
-                        {"5310 Sed Street", "38220", "Huntsville", "United Kingdom"},
-                        {"5311 Sed Street", "38220", "Huntsville", "United Kingdom"},
-                        {"5312 Sed Street", "38220", "Huntsville", "United Kingdom"},
-                        {"Fulham", "SW6", "London", "England"},
-                        {"201 St. John’s Road", "50502", "London", "United Kingdom"},
-                        {"202 St. John’s Road", "50502", "London", "United Kingdom"},
-                        {"203 St. John’s Road", "50502", "London", "United Kingdom"},
-                        {"204 St. John’s Road", "50502", "London", "United Kingdom"},
-                        {"205 St. John’s Road", "50502", "London", "United Kingdom"},
-                        {"206 St. John’s Road", "50502", "London", "United Kingdom"},
-                        {"207 St. John’s Road", "50502", "London", "United Kingdom"},
-                        {"208 St. John’s Road", "50502", "London", "United Kingdom"},
-                        {"209 St. John’s Road", "50502", "London", "United Kingdom"},
-                        {"210 St. John’s Road", "50502", "London", "United Kingdom"},
-                        {"211 St. John’s Road", "50502", "London", "United Kingdom"},
-                        {"212 St. John’s Road", "50502", "London", "United Kingdom"},
-                        {"213 St. John’s Road", "50502", "London", "United Kingdom"},
-                        {"Sir Matt Busby Way", "50509", "Greater Manchester", "United Kingdom"}};
-        for (String a[]: adresses) {
-            String temp_address1 = a[0];
-            String temp_postalCode = a[1];
-            String temp_city = a[2];
-            String temp_country = a[3];
-            Address address = new Address(temp_address1, temp_postalCode,temp_city,temp_country);
-            create(address);
-        }
-    }*/
 }

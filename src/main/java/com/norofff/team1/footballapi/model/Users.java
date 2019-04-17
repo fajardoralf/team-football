@@ -27,5 +27,12 @@ public class Users {
         this.password = password;
         this.role = role;
     }
+
+    public Users(String username, String password, boolean role) {
+        this.user_id = user_id;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
 }
 

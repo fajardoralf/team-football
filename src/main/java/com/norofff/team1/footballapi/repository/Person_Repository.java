@@ -14,6 +14,7 @@ public interface Person_Repository extends JpaRepository<Person, Integer> {
 
     void deleteById(int id);
 
+    //get team name by personid
     @Query(value = "SELECT ps.person_id, ps.first_name, ps.last_name, t.team_name\n" +
             "FROM player p JOIN person ps ON p.person_id = ps.person_id\n" +
             "JOIN team t ON p.team_id = t.team_id\n" +

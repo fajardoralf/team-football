@@ -24,4 +24,5 @@ public class WatchListPlayer {
         this.user_id = user_id;
         this.player_id = player_id;
     }
+
 }
