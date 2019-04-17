@@ -46,6 +46,7 @@ public class PersonController {
         }
     }
 
+    //get team name by personid
     @GetMapping("personname/{id}")
     public ResponseEntity<Object> getTeamByPersonId(@PathVariable int id){
         try{
