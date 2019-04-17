@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
+
+@CrossOrigin(origins = "*")
 @RestController
 public class WatchListPlayerController {
     private final WatchListPlayer_Service watchListPlayer_service;
