@@ -27,6 +27,10 @@ public class Team {
     @JoinColumn(name = "coach_id", updatable = false, insertable = false)
     private Coach coach;
 
+    @OneToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST}, fetch = FetchType.LAZY, targetEntity = Location.class)
+    @JoinColumn(name = "location_id", updatable = false, insertable = false)
+    private Location location;
+
     public Team(int team_id, int owner_id, int coach_id, int location_id, String team_name) {
         this.team_id = team_id;
         this.owner_id = owner_id;
