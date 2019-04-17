@@ -122,7 +122,7 @@ public class PlayerController {
     @PostMapping("/player/list")
     public ResponseEntity<Player[]> create(@RequestBody Player[] players){
         try{
-            for (int i = 0; i < players.length ; i++) {
+            for (int i = 0; i < players.length; i++) {
                 player_service.create(players[i]);
             }
             return new ResponseEntity<>(players, HttpStatus.CREATED);
