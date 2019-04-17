@@ -38,7 +38,7 @@ public class MatchPositionController {
         }
     }
 
-    @GetMapping("/matchposition/{matchPosition_id]")
+    @GetMapping("/matchposition/{matchPosition_id}")
     public ResponseEntity<MatchPosition> getOne(@PathVariable int matchPosition_id){
         try{
             MatchPosition matchPosition = matchPosition_service.getOne(matchPosition_id);
