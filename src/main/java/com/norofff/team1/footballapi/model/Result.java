@@ -18,6 +18,10 @@ public class Result {
     private int match_id;   //Primary Key
     private int team_id;
 
+    @OneToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST}, fetch = FetchType.LAZY, targetEntity = Match.class)
+    @JoinColumn(name = "match_id", updatable = false, insertable = false)
+    private Match match;
+    
     public Result(){}
 
     public Result(int result_id, int score, int match_id, int team_id, String result) {
