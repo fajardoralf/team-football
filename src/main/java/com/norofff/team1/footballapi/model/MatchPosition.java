@@ -21,6 +21,14 @@ public class MatchPosition implements Serializable {
     private int match_id;
     private String position;
 
+    @OneToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST}, fetch = FetchType.LAZY, targetEntity = Player.class)
+    @JoinColumn(name = "player_id", updatable = false, insertable = false)
+    private Player player;
+
+    @OneToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST}, fetch = FetchType.LAZY, targetEntity = Match.class)
+    @JoinColumn(name = "match_id", updatable = false, insertable = false)
+    private Match match;
+
     public MatchPosition(){}
 
     public MatchPosition(int matchPosition_id, int player_id, int match_id, String position) {
