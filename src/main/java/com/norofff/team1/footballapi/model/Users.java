@@ -21,10 +21,9 @@ public class Users {
 
     }
     public Users(Users user){
-        this.user_id = user_id;
-        this.username = username;
-        this.password = password;
-        this.role = role;
+        this.username = user.getUsername();
+        this.password = user.getPassword();
+        this.role = user.isRole();
     }
 
     public Users(int user_id, String username, String password, boolean role) {

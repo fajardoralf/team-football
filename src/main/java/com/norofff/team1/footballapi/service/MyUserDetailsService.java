@@ -19,8 +19,8 @@ public class MyUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
         Optional<Users> user = userService.findByUsername(username);
-
         user.orElseThrow(() -> new UsernameNotFoundException(username+"does not exist"));
+        System.out.println(user.map(MyUserPrincipal::new).get());
         return user.map(MyUserPrincipal::new).get();
     }
 
