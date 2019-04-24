@@ -10,6 +10,7 @@ public interface User_Service {
 
     Users getOne(int id);
     Users create(Users users);
+    Users encodePassword(Users users);
     Users update(int id, Users users);
     void delete(int id);
 }

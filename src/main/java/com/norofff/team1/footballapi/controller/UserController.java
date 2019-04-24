@@ -50,7 +50,7 @@ public class UserController {
     @PostMapping("/users")
     public ResponseEntity<Users> create(@RequestBody Users users){
         try{
-            user_service.create(users);
+            user_service.encodePassword(users);
             return new ResponseEntity<>(users, HttpStatus.CREATED);
         }catch (DataAccessException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
