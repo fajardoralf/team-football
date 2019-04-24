@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class Users_Implementation implements User_Service {
@@ -17,6 +18,7 @@ public class Users_Implementation implements User_Service {
         this.users_repository = users_repository;
     }
 
+    public Optional<Users> findByUsername(String username){return users_repository.findByUsername(username);}
     public List<Users> findAll() {
         return users_repository.findAll();
     }
