@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
@@ -21,6 +22,7 @@ public class UserController {
         this.user_service = user_service;
     }
 
+    //@PreAuthorize("hasAnyRole('ADMIN')")
     @GetMapping("/users")
     public ResponseEntity<List<Users>> findAll() {
         try {
