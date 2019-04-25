@@ -80,7 +80,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/user/login")
+    @PostMapping("/user/login")
     public String login(@AuthenticationPrincipal final MyUserPrincipal userDetails){
         String username = userDetails.getUsername();
         Collection<? extends GrantedAuthority> auth = userDetails.getAuthorities();
