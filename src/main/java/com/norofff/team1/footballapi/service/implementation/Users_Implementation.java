@@ -26,7 +26,7 @@ public class Users_Implementation implements User_Service {
     public List<Users> findAll() {
         return users_repository.findAll();
     }
-
+    public Users login(String username) {return users_repository.login(username);}
     public Users getOne(int id) {return users_repository.getOne(id);}
 
     public Users create(Users users)

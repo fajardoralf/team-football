@@ -15,6 +15,7 @@ public interface Users_Repository extends JpaRepository<Users, Integer> {
     Users getOne(int id);
     Users save(Users users);
     void deleteById(int id);
+    Users login(String username);
 
     @Query(value = "select * from users where username=?", nativeQuery = true)
     Optional<Users> findByUsername(String username);
