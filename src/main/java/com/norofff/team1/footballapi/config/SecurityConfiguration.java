@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.CorsConfigurationSource;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
@@ -24,6 +25,7 @@ import java.util.Arrays;
 @EnableJpaRepositories(basePackageClasses = Users_Repository.class)
 @Configuration
 @EnableWebSecurity
+@CrossOrigin(origins = "*")
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
     @Autowired
