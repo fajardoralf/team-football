@@ -17,7 +17,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-//@EnableGlobalMethodSecurity(prePostEnabled = true)
+
 @EnableJpaRepositories(basePackageClasses = Users_Repository.class)
 @Configuration
 @EnableWebSecurity
@@ -37,7 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         httpSecurity.csrf().disable();
         httpSecurity
                 .authorizeRequests()
-                .antMatchers("/users").authenticated()
+                //.antMatchers("/users").authenticated()
                 .anyRequest()
                 .permitAll()
                 .and().formLogin()

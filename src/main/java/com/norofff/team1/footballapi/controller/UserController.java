@@ -22,7 +22,7 @@ public class UserController {
         this.user_service = user_service;
     }
 
-    //@PreAuthorize("hasAnyRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @GetMapping("/users")
     public ResponseEntity<List<Users>> findAll() {
         try {
