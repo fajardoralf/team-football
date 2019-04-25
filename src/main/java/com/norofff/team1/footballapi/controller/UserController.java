@@ -1,21 +1,15 @@
 package com.norofff.team1.footballapi.controller;
 
-import com.norofff.team1.footballapi.model.MyUserPrincipal;
 import com.norofff.team1.footballapi.model.Users;
-import com.norofff.team1.footballapi.service.MyUserDetailsService;
 import com.norofff.team1.footballapi.service.User_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
-import java.util.Collection;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -27,9 +21,6 @@ public class UserController {
     public UserController(User_Service user_service){
         this.user_service = user_service;
     }
-
-    @Autowired
-    private MyUserDetailsService userDetailsService;
 
     @PreAuthorize("hasAnyRole('ADMIN')")
     @GetMapping("/users")
@@ -81,11 +72,15 @@ public class UserController {
     }
 
     @PostMapping("/user/login")
-    public String login(@AuthenticationPrincipal final MyUserPrincipal userDetails){
-        String username = userDetails.getUsername();
-        Collection<? extends GrantedAuthority> auth = userDetails.getAuthorities();
-        auth.forEach(System.out::println);
-        return "hei";
+    public ResponseEntity<Users> login(@RequestBody Users users){
+        try{
+            user_service.findByUsername(users.getUsername());
+            return new ResponseEntity<>(users, HttpStatus.CREATED);
+        }catch (DataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch(EntityNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @DeleteMapping(value = "/users/{id}")
