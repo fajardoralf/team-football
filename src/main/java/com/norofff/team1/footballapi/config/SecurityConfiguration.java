@@ -14,6 +14,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 @EnableJpaRepositories(basePackageClasses = Users_Repository.class)
 @Configuration
@@ -49,9 +52,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .and().formLogin()
                 //.loginPage("/users/login")
                 .permitAll().and().httpBasic();*/
-        httpSecurity.csrf().disable()
+        httpSecurity
+                .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/test").permitAll()
+                .antMatchers("/users").authenticated()
+                .anyRequest().permitAll()
+                .and().formLogin().loginProcessingUrl("/performe_login")
                 .and().httpBasic();
     }
 
@@ -74,15 +80,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                .logoutSuccessUrl("/");
    }*/
 
-   /* @Bean
-    CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("*"));
-        configuration.setAllowedMethods(Arrays.asList("GET","POST","PUT","OPTIONS","DELETE"));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
-    }*/
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {

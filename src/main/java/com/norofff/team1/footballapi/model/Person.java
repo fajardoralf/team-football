@@ -1,5 +1,6 @@
 package com.norofff.team1.footballapi.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.sql.Date;
 @Entity
 @Table(name = "person")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Person{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

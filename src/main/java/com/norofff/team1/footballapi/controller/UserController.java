@@ -74,19 +74,22 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @PostMapping("/login")
-    public ResponseEntity<Optional<Users>> login(@RequestBody Users user){
+    /*@PostMapping("/login")
+    public ResponseEntity<MyUserPrincipal> login(@RequestBody Users user){
         try {
+            System.out.println("user " + user);
             Optional<Users> returned_user = user_service.findByUsername(user.getUsername());
+            MyUserPrincipal mu = new MyUserPrincipal(user.getUsername(),user.getPassword());
+            System.out.println("returned user " + returned_user);
+            System.out.println("mu " + mu);
             if(!(returned_user.isPresent())){
                 throw new EntityNotFoundException();
             }
-            return new ResponseEntity<>(returned_user, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(mu, HttpStatus.ACCEPTED);
         } catch(EntityNotFoundException e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-
-    }
+    }*/
 
     @DeleteMapping(value = "/users/{id}")
     public void delete(@PathVariable int id){

@@ -8,11 +8,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 public class MyUserPrincipal extends Users implements UserDetails {
 
-    public MyUserPrincipal( final Users user){
+    public MyUserPrincipal(final Users user){
         super(user);
+    }
+    public MyUserPrincipal(String username, String password){
+        super(username,password);
     }
 
     @Override

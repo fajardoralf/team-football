@@ -1,6 +1,7 @@
 package com.norofff.team1.footballapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 
@@ -11,6 +12,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "match_position")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class MatchPosition implements Serializable {
 
     @Id
