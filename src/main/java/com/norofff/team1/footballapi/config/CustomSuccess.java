@@ -1,5 +1,6 @@
 package com.norofff.team1.footballapi.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
