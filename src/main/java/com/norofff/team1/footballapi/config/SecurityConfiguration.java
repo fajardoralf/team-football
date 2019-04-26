@@ -15,6 +15,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -36,51 +37,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity httpSecurity) throws Exception {
 
-                /*httpSecurity.csrf().disable()
-                .authorizeRequests()
-                .antMatchers(HttpMethod.GET,"/index*","/static/**", "/*.json", "/*.ico")
-                .permitAll()
-                .anyRequest().authenticated()
-                        .and()
-                        .formLogin().loginPage("/index.html")
-                        .loginProcessingUrl("/perform_login")
-                        .defaultSuccessUrl("/homepage.html",true)
-                        .failureUrl("/index.html?error=true");*/
-        /*httpSecurity.csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/test").hasRole("USER")
-                .anyRequest()
-                .permitAll()
-                .and().formLogin()
-                //.loginPage("/users/login")
-                .permitAll().and().httpBasic();*/
         httpSecurity.cors().and()
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/users").authenticated()
+                .antMatchers("/**").permitAll()
                 .anyRequest().permitAll()
-                .and().formLogin().loginProcessingUrl("/perform_login")
+                .and().formLogin().loginProcessingUrl("/perform_login")//.successHandler(customSuccess())
                 .and().httpBasic();
     }
 
-   /*@Override
-   protected void configure(HttpSecurity http) throws Exception {
-       http
-               .authorizeRequests()
-               .antMatchers("/bower_components/**", "/*.js",
-                       "/*.jsx", "/main.css").permitAll()
-               .anyRequest().authenticated()
-               .and()
-               .formLogin()
-               .defaultSuccessUrl("/", true)
-               .permitAll()
-               .and()
-               .httpBasic()
-               .and()
-               .csrf().disable()
-               .logout()
-               .logoutSuccessUrl("/");
-   }*/
+    //@Bean
+    //public AuthenticationFailureHandler customSuccess() {
+     //   return new CustomSuccess();
+    //}
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
