@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,10 +28,10 @@ public class LoginController {
     @Autowired
     private User_Service userService;
 
-    @GetMapping("/userdetails")
-    public ResponseEntity<Optional<Users>> currUnserName(Principal authentication){
+    @GetMapping("/userdetails/{username}")
+    public ResponseEntity<Optional<Users>> currUnserName(@PathVariable String username){
         try {
-            Optional<Users> user = userService.findByUsername(authentication.getName());
+            Optional<Users> user = userService.findByUsername(username);
             return new ResponseEntity<>(user, HttpStatus.ACCEPTED);
         }catch (DataAccessException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

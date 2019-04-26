@@ -53,29 +53,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**").permitAll()
                 .anyRequest().permitAll()
                 .and().formLogin().loginProcessingUrl("/perform_login")
-                .successHandler(customSuccess())
-                //.successForwardUrl("/userdetails")
                 .failureHandler(new SimpleUrlAuthenticationFailureHandler())
                 //.and().logout().logoutSuccessUrl("/")
                 .and().httpBasic();
-    }
-
-    /*@Bean
-    public AuthenticationSuccessHandler customSuccess() {
-        return new AuthenticationSuccessHandler() {
-
-            @Override
-            public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-                response.getWriter().write(new ObjectMapper().writeValueAsString(new UserAuthenticationResponse(authentication.getName(), 123l)));
-                response.setStatus(200);
-            }
-
-        };
-    }*/
-
-    @Bean
-    public AuthenticationSuccessHandler customSuccess() {
-        return new CustomSuccess();
     }
 
     @Bean
