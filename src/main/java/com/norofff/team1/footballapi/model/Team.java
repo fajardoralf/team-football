@@ -15,9 +15,9 @@ public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int team_id;
-    private int owner_id;
-    private int coach_id;
-    private int location_id;
+    private Integer owner_id;
+    private Integer coach_id;
+    private Integer location_id;
     private String team_name;
     public Team(){}
 

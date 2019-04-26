@@ -15,7 +15,7 @@ public class Coach {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int coach_id;   //Primary Key
-    private int person_id;  //Foregin key
+    private Integer person_id;  //Foregin key
 
     @OneToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST}, fetch = FetchType.LAZY, targetEntity = Person.class)
     @JoinColumn(name = "person_id", updatable = false, insertable = false)

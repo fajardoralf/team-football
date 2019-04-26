@@ -17,7 +17,7 @@ public class Result {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int result_id;
     private String result;
-    private int match_id;   //Primary Key
+    private Integer match_id;   //Primary Key
     private int team_id;
 
     @OneToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST}, fetch = FetchType.LAZY, targetEntity = Match.class)

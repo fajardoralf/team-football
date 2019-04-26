@@ -17,10 +17,10 @@ public class Match {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int match_id;   //Primary Key
     private Date match_date;
-    private int season_id;      //Foreign key
-    private int location_id;    //Foreign key
-    private int home_team_id;   //Foreign key
-    private int away_team_id;   //Foreign key
+    private Integer season_id;      //Foreign key
+    private Integer location_id;    //Foreign key
+    private Integer home_team_id;   //Foreign key
+    private Integer away_team_id;   //Foreign key
 
     @OneToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST}, fetch = FetchType.LAZY, targetEntity = Team.class)
     @JoinColumn(name = "home_team_id", updatable = false, insertable = false)

@@ -16,7 +16,7 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int location_id;    //Primary key
     private String name;
-    private int address_id;  //Foreign key
+    private Integer address_id;  //Foreign key
     private String description; //Can be Null
 
     public Location(){}

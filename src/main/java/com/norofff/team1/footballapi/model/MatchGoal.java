@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 
 @Data
 @Entity
@@ -16,9 +17,9 @@ public class MatchGoal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int goal_id;    //Primary key
     private String description; //Can be Null
-    private int goal_type_id;   //Foreign key
-    private int match_id;       //Foreign key
-    private int player_id;      //Foreign key
+    private Integer goal_type_id;   //Foreign key
+    private Integer match_id;       //Foreign key
+    private Integer player_id;      //Foreign key
 
     @OneToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST}, fetch = FetchType.LAZY, targetEntity = Player.class)
     @JoinColumn(name = "player_id", updatable = false, insertable = false)

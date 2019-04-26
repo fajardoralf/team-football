@@ -15,7 +15,7 @@ public class Owner {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int owner_id;
-    private int person_id;
+    private Integer person_id;
 
     @OneToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST}, fetch = FetchType.LAZY, targetEntity = Person.class)
     @JoinColumn(name = "person_id", updatable = false, insertable = false)

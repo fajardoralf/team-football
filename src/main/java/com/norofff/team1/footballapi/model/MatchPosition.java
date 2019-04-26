@@ -19,8 +19,8 @@ public class MatchPosition implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "matchposition_id")
     private int matchPosition_id;
-    private int player_id;
-    private int match_id;
+    private Integer player_id;
+    private Integer match_id;
     private String position;
 
     @OneToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST}, fetch = FetchType.LAZY, targetEntity = Player.class)

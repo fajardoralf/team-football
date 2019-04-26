@@ -17,7 +17,7 @@ public class Contact {
     private int contact_id;         //Primary Key
     private String contact_type;
     private String contact_detail;
-    private int person_id;          //Foregin Key
+    private Integer person_id;          //Foregin Key
 
     @OneToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST}, fetch = FetchType.LAZY, targetEntity = Person.class)
     @JoinColumn(name = "person_id", updatable = false, insertable = false)
