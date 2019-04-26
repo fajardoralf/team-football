@@ -1,6 +1,7 @@
 package com.norofff.team1.footballapi.config;
 
 
+import com.google.common.collect.ImmutableList;
 import com.norofff.team1.footballapi.repository.Users_Repository;
 import com.norofff.team1.footballapi.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +15,15 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.cors.*;
-import com.google.common.collect.ImmutableList;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
 
 @EnableJpaRepositories(basePackageClasses = Users_Repository.class)
 @Configuration
 @EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private MyUserDetailsService userDetailsService;
@@ -51,7 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .and().formLogin()
                 //.loginPage("/users/login")
                 .permitAll().and().httpBasic();*/
-        httpSecurity
+        httpSecurity.cors().and()
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/users").authenticated()
