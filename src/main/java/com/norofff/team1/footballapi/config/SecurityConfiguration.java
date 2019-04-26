@@ -1,6 +1,7 @@
 package com.norofff.team1.footballapi.config;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableList;
 import com.norofff.team1.footballapi.repository.Users_Repository;
 import com.norofff.team1.footballapi.service.MyUserDetailsService;
@@ -13,6 +14,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
@@ -21,6 +23,11 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationFa
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 
 @EnableJpaRepositories(basePackageClasses = Users_Repository.class)
@@ -47,10 +54,24 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().permitAll()
                 .and().formLogin().loginProcessingUrl("/perform_login")
                 .successHandler(customSuccess())
+                //.successForwardUrl("/userdetails")
                 .failureHandler(new SimpleUrlAuthenticationFailureHandler())
                 //.and().logout().logoutSuccessUrl("/")
                 .and().httpBasic();
     }
+
+    /*@Bean
+    public AuthenticationSuccessHandler customSuccess() {
+        return new AuthenticationSuccessHandler() {
+
+            @Override
+            public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+                response.getWriter().write(new ObjectMapper().writeValueAsString(new UserAuthenticationResponse(authentication.getName(), 123l)));
+                response.setStatus(200);
+            }
+
+        };
+    }*/
 
     @Bean
     public AuthenticationSuccessHandler customSuccess() {

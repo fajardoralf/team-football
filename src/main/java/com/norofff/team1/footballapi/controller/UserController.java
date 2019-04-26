@@ -76,13 +76,6 @@ public class UserController {
         }
     }
 
-    @Autowired
-    private User_Service userService;
-
-    @GetMapping("/userdetails")
-    public Optional<Users> currUnserName(Authentication authentication){
-        return userService.findByUsername(authentication.getName());
-    }
 
     @DeleteMapping(value = "/users/{id}")
     public void delete(@PathVariable int id){
