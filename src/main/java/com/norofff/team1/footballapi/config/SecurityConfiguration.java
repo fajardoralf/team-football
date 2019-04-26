@@ -16,6 +16,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -43,14 +45,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/users").authenticated()
                 .antMatchers("/**").permitAll()
                 .anyRequest().permitAll()
-                .and().formLogin().loginProcessingUrl("/perform_login")//.successHandler(customSuccess())
+                .and().formLogin().loginProcessingUrl("/perform_login")
+                .successHandler(customSuccess())
+                .failureHandler(new SimpleUrlAuthenticationFailureHandler())
+                .and().logout().logoutSuccessUrl("/")
                 .and().httpBasic();
     }
 
-    //@Bean
-    //public AuthenticationFailureHandler customSuccess() {
-     //   return new CustomSuccess();
-    //}
+    @Bean
+    public AuthenticationSuccessHandler customSuccess() {
+        return new CustomSuccess();
+    }
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {

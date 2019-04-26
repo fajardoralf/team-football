@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
@@ -74,22 +75,14 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    /*@PostMapping("/login")
-    public ResponseEntity<MyUserPrincipal> login(@RequestBody Users user){
-        try {
-            System.out.println("user " + user);
-            Optional<Users> returned_user = user_service.findByUsername(user.getUsername());
-            MyUserPrincipal mu = new MyUserPrincipal(user.getUsername(),user.getPassword());
-            System.out.println("returned user " + returned_user);
-            System.out.println("mu " + mu);
-            if(!(returned_user.isPresent())){
-                throw new EntityNotFoundException();
-            }
-            return new ResponseEntity<>(mu, HttpStatus.ACCEPTED);
-        } catch(EntityNotFoundException e){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }*/
+
+    @Autowired
+    private User_Service userService;
+
+    @GetMapping("/userdetails")
+    public Optional<Users> currUnserName(Authentication authentication){
+        return userService.findByUsername(authentication.getName());
+    }
 
     @DeleteMapping(value = "/users/{id}")
     public void delete(@PathVariable int id){
