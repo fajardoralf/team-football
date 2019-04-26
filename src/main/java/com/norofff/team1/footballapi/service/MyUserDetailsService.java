@@ -2,7 +2,6 @@ package com.norofff.team1.footballapi.service;
 
 import com.norofff.team1.footballapi.model.MyUserPrincipal;
 import com.norofff.team1.footballapi.model.Users;
-import com.norofff.team1.footballapi.repository.Users_Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

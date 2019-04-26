@@ -14,25 +14,17 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.reactive.CorsConfigurationSource;
-import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
-
-import java.util.Arrays;
-
 
 @EnableJpaRepositories(basePackageClasses = Users_Repository.class)
 @Configuration
 @EnableWebSecurity
-@CrossOrigin(origins = "*")
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
     @Autowired
     private MyUserDetailsService userDetailsService;
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+    public void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.authenticationProvider(authenticationProvider());
     }
 
@@ -49,14 +41,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                         .loginProcessingUrl("/perform_login")
                         .defaultSuccessUrl("/homepage.html",true)
                         .failureUrl("/index.html?error=true");*/
-        httpSecurity.csrf().disable()
+        /*httpSecurity.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/users").authenticated()
+                .antMatchers("/test").hasRole("USER")
                 .anyRequest()
                 .permitAll()
                 .and().formLogin()
-                //.loginPage("http:/localhost:3000")
-                .permitAll();
+                //.loginPage("/users/login")
+                .permitAll().and().httpBasic();*/
+        httpSecurity.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/test").permitAll()
+                .and().httpBasic();
     }
 
    /*@Override
@@ -78,7 +74,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                .logoutSuccessUrl("/");
    }*/
 
-    @Bean
+   /* @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("*"));
@@ -86,7 +82,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
-    }
+    }*/
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
