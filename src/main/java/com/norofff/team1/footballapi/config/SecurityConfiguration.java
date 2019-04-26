@@ -48,7 +48,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and().formLogin().loginProcessingUrl("/perform_login")
                 .successHandler(customSuccess())
                 .failureHandler(new SimpleUrlAuthenticationFailureHandler())
-                .and().logout().logoutSuccessUrl("/")
+                //.and().logout().logoutSuccessUrl("/")
                 .and().httpBasic();
     }
 
