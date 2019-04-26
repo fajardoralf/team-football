@@ -1,5 +1,6 @@
 package com.norofff.team1.footballapi.service.implementation;
 
+import com.norofff.team1.footballapi.model.MyUserPrincipal;
 import com.norofff.team1.footballapi.model.Users;
 import com.norofff.team1.footballapi.repository.Users_Repository;
 import com.norofff.team1.footballapi.service.User_Service;

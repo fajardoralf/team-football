@@ -1,6 +1,7 @@
 package com.norofff.team1.footballapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="watchlist_team")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class WatchListTeam {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

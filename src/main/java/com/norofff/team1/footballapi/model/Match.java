@@ -1,6 +1,7 @@
 package com.norofff.team1.footballapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import java.sql.Date;
 @Entity
 @Table(name = "match")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Match {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
