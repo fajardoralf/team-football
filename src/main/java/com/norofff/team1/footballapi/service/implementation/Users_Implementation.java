@@ -41,8 +41,11 @@ public class Users_Implementation implements User_Service {
 
 
 
-    public Users update(int id, Users users){
+    public Users update(int id, Users userToEncode){
+        Users users = new Users();
         users.setUser_id(id);
+        users.setUsername(userToEncode.getUsername());
+        users.setPassword(passwordEncoder.encode(userToEncode.getPassword()));
         return users_repository.save(users);
     }
 
