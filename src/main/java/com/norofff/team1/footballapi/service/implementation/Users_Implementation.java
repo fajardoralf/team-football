@@ -45,6 +45,7 @@ public class Users_Implementation implements User_Service {
         Users users = new Users();
         users.setUser_id(id);
         users.setUsername(userToEncode.getUsername());
+        users.setRole((userToEncode.isRole()));
         users.setPassword(passwordEncoder.encode(userToEncode.getPassword()));
         return users_repository.save(users);
     }
