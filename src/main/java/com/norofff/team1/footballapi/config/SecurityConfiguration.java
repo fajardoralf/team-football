@@ -1,6 +1,7 @@
 package com.norofff.team1.footballapi.config;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableList;
 import com.norofff.team1.footballapi.repository.Users_Repository;
 import com.norofff.team1.footballapi.service.MyUserDetailsService;
@@ -13,11 +14,20 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 
 @EnableJpaRepositories(basePackageClasses = Users_Repository.class)
@@ -36,51 +46,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity httpSecurity) throws Exception {
 
-                /*httpSecurity.csrf().disable()
-                .authorizeRequests()
-                .antMatchers(HttpMethod.GET,"/index*","/static/**", "/*.json", "/*.ico")
-                .permitAll()
-                .anyRequest().authenticated()
-                        .and()
-                        .formLogin().loginPage("/index.html")
-                        .loginProcessingUrl("/perform_login")
-                        .defaultSuccessUrl("/homepage.html",true)
-                        .failureUrl("/index.html?error=true");*/
-        /*httpSecurity.csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/test").hasRole("USER")
-                .anyRequest()
-                .permitAll()
-                .and().formLogin()
-                //.loginPage("/users/login")
-                .permitAll().and().httpBasic();*/
         httpSecurity.cors().and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/users").authenticated()
+                .antMatchers("/**").permitAll()
                 .anyRequest().permitAll()
                 .and().formLogin().loginProcessingUrl("/perform_login")
+                .failureHandler(new SimpleUrlAuthenticationFailureHandler())
+                //.and().logout().logoutSuccessUrl("/")
                 .and().httpBasic();
     }
-
-   /*@Override
-   protected void configure(HttpSecurity http) throws Exception {
-       http
-               .authorizeRequests()
-               .antMatchers("/bower_components/**", "/*.js",
-                       "/*.jsx", "/main.css").permitAll()
-               .anyRequest().authenticated()
-               .and()
-               .formLogin()
-               .defaultSuccessUrl("/", true)
-               .permitAll()
-               .and()
-               .httpBasic()
-               .and()
-               .csrf().disable()
-               .logout()
-               .logoutSuccessUrl("/");
-   }*/
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
